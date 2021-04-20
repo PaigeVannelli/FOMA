@@ -5,7 +5,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-
+      searchedIDs: [],
+      //term is passed up from search then fetch call is run
+      //passed down to ArtDetails 
+      error: ''
     }
   }
 
