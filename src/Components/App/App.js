@@ -22,10 +22,10 @@ class App extends Component {
 
   search = (searchTerm) => {
     // this.setState({ searchTerm: searchTerm})
-    console.log(searchTerm)
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
     .then(response => response.json())
-    .then(data => console.log(data))
+    // .then(info => console.log(info))
+    .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
   }
 
   render() {
