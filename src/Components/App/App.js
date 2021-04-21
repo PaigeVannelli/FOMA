@@ -16,7 +16,15 @@ class App extends Component {
 
   render() {
     return (
-      <h1>TEST</h1>
+      <main>
+        <Route 
+        exact path='/'
+        render={() => {
+          return <LandingPage />
+        }}/>
+        {/* <ArtPage />
+        <AllFavorites /> */}
+      </main>
     )
   }
 }
