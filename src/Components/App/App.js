@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
 
@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       searchedArtIDs: [],
       currentArtID: 0,
+      currentArtIndex: 0,
       currentArt: {},
       favoritedArt: [],
       // searchTerm: '',
@@ -19,37 +20,45 @@ class App extends Component {
       error: ''
     }
   }
-
-  // componentDidMount = () => {
-
-  // }
-
+  
   search = (searchTerm) => {
     // this.setState({ searchTerm: searchTerm})
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
-      .then(response => response.json())
-      .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
-      .then(() => this.randomizeArtIDs())
-      .then(() => window.location.assign(`/${this.state.currentArtID}`))
+    .then(response => response.json())
+    // .then(data => console.log(data.objectIDs))
+    .then(data => this.setState({ searchedArtIDs: data.objectIDs }))
+    .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
+    // .then(() => this.randomizeArtIDs())
+    // .then(() => window.location.assign(`/${this.state.currentArtID}`))
   }
-
-  randomizeArtIDs = () => {
-    let searchedArtArray = this.state.searchedArtIDs
-    for (var i = searchedArtArray.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = searchedArtArray[i];
-        searchedArtArray[i] = searchedArtArray[j];
-        searchedArtArray[j] = temp;
+  
+  // randomizeArtIDs = () => {
+  //   let searchedArtArray = this.state.searchedArtIDs
+  //   for (var i = searchedArtArray.length - 1; i > 0; i--) {
+  //     var j = Math.floor(Math.random() * (i + 1));
+  //     var temp = searchedArtArray[i];
+  //     searchedArtArray[i] = searchedArtArray[j];
+  //     searchedArtArray[j] = temp;
+  //   }
+  //   this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
+  // }
+  
+  displayNextPiece = () => {
+    console.log(this.state.currentArtIndex, this.state.searchedArtIDs.length)
+    if (this.state.currentArtIndex < this.state.searchedArtIDs.length) {
+      let index = this.state.currentArtIndex + 1
+      console.log("test")
+      this.setState({ currentArtIndex: index })
+      this.setState({ currentArtID: this.state.searchedArtIDs[this.currentArtIndex] })
     }
-    this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
   }
-
 
   render = () => {
     return (
       <main className='main'>
         <BrowserRouter>
           <Switch>
+            {this.state.searchedArtIDs.length > 0 && <Redirect to={`/${this.state.currentArtId}`} />}
             <Route 
             exact path='/'
             render={() => {
@@ -58,7 +67,7 @@ class App extends Component {
             <Route 
             exact path={'/:id'}
             render={(match) => {
-              return <ArtPage currentArtID={match.match.params.id}/>
+              return <ArtPage currentArtID={match.match.params.id} displayNextPiece={this.displayNextPiece}/>
             }}
             />
             {/* <AllFavorites /> */}

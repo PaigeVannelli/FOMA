@@ -35,6 +35,7 @@ class ArtPage extends Component {
       <section className='art-page'>
         {/* <ArtImage /> do I need this? */}
         <div className='art-piece-container'>
+          <button onClick={this.props.displayNextPiece}>></button>
           <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
         </div>
         <ArtDetails currentArt={this.state.currentArt}/>
