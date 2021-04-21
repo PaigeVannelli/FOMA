@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LandingPage from '../LandingPage/LandingPage'
+import ArtPage from '../ArtPage/ArtPage'
 class App extends Component {
   constructor() {
     super();
@@ -27,6 +28,7 @@ class App extends Component {
     .then(response => response.json())
     .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
     .then(() => this.randomizeArtIDs())
+    .then(() => window.location.assign(`/${this.state.currentArtID}`))
   }
 
   randomizeArtIDs = () => {
@@ -41,7 +43,7 @@ class App extends Component {
   }
 
 
-  render() {
+  render = () => {
     return (
       <main>
         <BrowserRouter>
@@ -52,9 +54,9 @@ class App extends Component {
               return <LandingPage search={this.search}/>
             }}/>
             <Route 
-            exact path={`/${this.state.currentArtID}`}
-            render={() => {
-              return <ArtPage />
+            exact path={'/:id'}
+            render={(match) => {
+              return <ArtPage currentArtID={match.match.params.id}/>
             }}
             />
             {/* <AllFavorites /> */}
