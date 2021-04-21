@@ -2,16 +2,30 @@ import './Search.css'
 import React, { Component } from 'react'
 
 class Search extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       searchTerm: '',
       error: ''
     }
   }
 
-  handleChange = () => {
-    // this.setState({ [event.target.name]: event.target.value})
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value})
+  }
+
+  searchForInput = event => {
+    event.preventDefault()
+    const searchTerm = {
+      id: Date.now(),
+      ...this.state,
+    }
+    this.props.addSearchTerm(searchTerm)
+    this.clearInputs()
+  }
+
+  clearInputs = () => {
+    this.setState({ searchTerm: '' })
   }
 
   render() {
@@ -22,9 +36,9 @@ class Search extends Component {
         type='text'
         name='searchTerm'
         value={this.state.searchTerm}
-        // onChange={event => this.handleChange(event)}
+        onChange={event => this.handleChange(event)}
         />
-        <button onClick={event => this.submitSnack(event)}>Submit Snack</button>
+        <button onClick={event => this.searchForInput(event)}>Search</button>
       </form>
     )
   }
