@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import LandingPage from '../LandingPage/LandingPage'
-import ArtPage from '../ArtPage/ArtPage'
+import LandingPage from '../landingPage/LandingPage'
+import ArtPage from '../artPage/ArtPage'
+
+//Change app to name! 
 class App extends Component {
   constructor() {
     super();
@@ -60,6 +62,7 @@ class App extends Component {
             }}
             />
             {/* <AllFavorites /> */}
+            {/* URL error handling! have an error component */}
           </Switch>
         </BrowserRouter>
       </main>
