@@ -47,7 +47,7 @@ class App extends Component {
 
   render = () => {
     return (
-      <main>
+      <main className='main'>
         <BrowserRouter>
           <Switch>
             <Route 

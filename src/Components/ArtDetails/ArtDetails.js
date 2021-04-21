@@ -3,7 +3,7 @@ import './ArtDetails.css'
 const ArtDetails = ({ currentArt }) => {
 
   return (
-    <article>
+    <article className='art-details'>
       <h1>Title: {currentArt.title}</h1>
       <p>Medium: {currentArt.medium}</p>
       <p>Artist: {currentArt.artist}</p>

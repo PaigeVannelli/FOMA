@@ -32,9 +32,11 @@ class ArtPage extends Component {
 
   render = () => {
     return (
-      <section>
+      <section className='art-page'>
         {/* <ArtImage /> do I need this? */}
-        <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+        <div className='art-piece-container'>
+          <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+        </div>
         <ArtDetails currentArt={this.state.currentArt}/>
       </section>
     )

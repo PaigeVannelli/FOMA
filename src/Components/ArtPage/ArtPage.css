@@ -1,0 +1,17 @@
+.art-page {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.art-piece-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+}
+
+.art-piece {
+  max-height: 25em;
+  max-width: auto;
+}
