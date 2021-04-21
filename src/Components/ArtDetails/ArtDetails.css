@@ -1,4 +1,14 @@
 .art-details {
-  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
   background-color: rgb(194, 194, 194);
+  width: 30%;
+}
+
+.details {
+  margin-left: 35px
+}
+
+.title {
+  margin-top: 35%;
 }

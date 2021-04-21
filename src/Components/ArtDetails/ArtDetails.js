@@ -4,13 +4,12 @@ const ArtDetails = ({ currentArt }) => {
 
   return (
     <article className='art-details'>
-      <h1>Title: {currentArt.title}</h1>
-      <p>Medium: {currentArt.medium}</p>
-      <p>Artist: {currentArt.artist}</p>
-      <p>Date: {currentArt.date}</p>
+      <h1 className='title details'>Title: {currentArt.title}</h1>
+      <p className='details'>Medium: {currentArt.medium}</p>
+      <p className='details'>Artist: {currentArt.artist}</p>
+      <p className='details'>Date: {currentArt.date}</p>
     </article>
   )
 }
 
 export default ArtDetails
-//Should be given a title etc. to display and have a button that route to favorites and home 
