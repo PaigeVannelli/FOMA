@@ -1,12 +1,12 @@
 import './LandingPage.css'
 import Search from '../Search/Search'
 
-const LandingPage = () => {
+const LandingPage = ({ search }) => {
   return (
     <section>
       <h1>TBD Title</h1>
       <h3>Dedicated to.....</h3>
-      <Search />
+      <Search search={search}/>
     </section>
   )
   //Need to return the right background on this component!

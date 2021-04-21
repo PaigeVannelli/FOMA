@@ -6,7 +6,6 @@ class Search extends Component {
     super(props)
     this.state = {
       searchTerm: '',
-      error: ''
     }
   }
 
@@ -20,7 +19,7 @@ class Search extends Component {
       id: Date.now(),
       ...this.state,
     }
-    this.props.addSearchTerm(searchTerm)
+    this.props.search(searchTerm)
     this.clearInputs()
   }
 
