@@ -51,8 +51,13 @@ class App extends Component {
             render={() => {
               return <LandingPage search={this.search}/>
             }}/>
-            {/* <ArtPage />
-            <AllFavorites /> */}
+            <Route 
+            exact path={`/${this.state.currentArtID}`}
+            render={() => {
+              return <ArtPage />
+            }}
+            />
+            {/* <AllFavorites /> */}
           </Switch>
         </BrowserRouter>
       </main>
