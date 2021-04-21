@@ -13,12 +13,15 @@ class ArtPage extends Component {
   componentDidMount = () => {
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({ currentArt: data }))
   }
 
   render = () => {
     return (
-      <h1>Test</h1>
+      <article>
+        <h1>Test</h1>
+        <img src={this.state.currentArt.primaryImage} />
+      </article>
     )
   }
 }
