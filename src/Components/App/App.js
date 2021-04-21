@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import LandingPage from '../LandingPage/LandingPage'
 class App extends Component {
   constructor() {
     super();
@@ -17,13 +18,17 @@ class App extends Component {
   render() {
     return (
       <main>
-        <Route 
-        exact path='/'
-        render={() => {
-          return <LandingPage />
-        }}/>
-        {/* <ArtPage />
-        <AllFavorites /> */}
+        <BrowserRouter>
+          <Switch>
+            <Route 
+            exact path='/'
+            render={() => {
+              return <LandingPage />
+            }}/>
+            {/* <ArtPage />
+            <AllFavorites /> */}
+          </Switch>
+        </BrowserRouter>
       </main>
     )
   }
