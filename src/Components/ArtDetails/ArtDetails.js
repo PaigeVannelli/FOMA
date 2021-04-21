@@ -7,7 +7,7 @@ const ArtDetails = ({ currentArt }) => {
       <h1>Title: {currentArt.title}</h1>
       <p>Medium: {currentArt.medium}</p>
       <p>Artist: {currentArt.artist}</p>
-      <p>Date: {currentArt.objectDate}</p>
+      <p>Date: {currentArt.date}</p>
     </article>
   )
 }
