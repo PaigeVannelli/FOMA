@@ -25,10 +25,10 @@ class App extends Component {
   search = (searchTerm) => {
     // this.setState({ searchTerm: searchTerm})
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
-    .then(response => response.json())
-    .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
-    .then(() => this.randomizeArtIDs())
-    .then(() => window.location.assign(`/${this.state.currentArtID}`))
+      .then(response => response.json())
+      .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
+      .then(() => this.randomizeArtIDs())
+      .then(() => window.location.assign(`/${this.state.currentArtID}`))
   }
 
   randomizeArtIDs = () => {

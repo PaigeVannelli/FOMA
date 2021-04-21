@@ -10,6 +10,12 @@ class ArtPage extends Component {
     }
   }
 
+  componentDidMount = () => {
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }
+
   render = () => {
     return (
       <h1>Test</h1>
