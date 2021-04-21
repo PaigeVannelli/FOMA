@@ -35,8 +35,7 @@ class ArtPage extends Component {
       <section>
         {/* <ArtImage /> do I need this? */}
         <img src={this.state.currentArt.primaryImage} />
-        {/* <ArtDetails /> */}
-        <h1>Test</h1>
+        <ArtDetails currentArt={this.state.currentArt}/>
       </section>
     )
   }
