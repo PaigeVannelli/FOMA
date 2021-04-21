@@ -5,10 +5,31 @@
   width: 30%;
 }
 
+.button-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button {
+  height: 2em;
+  margin: 15px;
+}
+
+.favorite-button{
+  background-color: rgb(194, 194, 194);
+  border: none;
+}
+
+.home {
+  height: 2em;
+  margin: 15px 15px 15px 35px;
+}
+
 .details {
   margin-left: 35px
 }
 
 .title {
-  margin-top: 35%;
+  margin-top: 20%;
 }
