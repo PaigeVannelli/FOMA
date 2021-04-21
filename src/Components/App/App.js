@@ -7,6 +7,7 @@ class App extends Component {
     super();
     this.state = {
       searchedArtIDs: [],
+      currentArtID: 0,
       currentArt: {},
       favoritedArt: [],
       // searchTerm: '',
@@ -24,9 +25,21 @@ class App extends Component {
     // this.setState({ searchTerm: searchTerm})
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
     .then(response => response.json())
-    // .then(info => console.log(info))
     .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
+    .then(() => this.randomizeArtIDs())
   }
+
+  randomizeArtIDs = () => {
+    let searchedArtArray = this.state.searchedArtIDs
+    for (var i = searchedArtArray.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = searchedArtArray[i];
+        searchedArtArray[i] = searchedArtArray[j];
+        searchedArtArray[j] = temp;
+    }
+    this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
+  }
+
 
   render() {
     return (
