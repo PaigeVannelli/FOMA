@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import LandingPage from '../LandingPage/LandingPage'
+import LandingPage from '../landingPage/LandingPage'
+import ArtPage from '../artPage/ArtPage'
+
+//Change app to name! 
 class App extends Component {
   constructor() {
     super();
@@ -24,9 +27,10 @@ class App extends Component {
   search = (searchTerm) => {
     // this.setState({ searchTerm: searchTerm})
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
-    .then(response => response.json())
-    .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
-    .then(() => this.randomizeArtIDs())
+      .then(response => response.json())
+      .then(data => this.setState({ searchedArtIDs: data.objectIDs}))
+      .then(() => this.randomizeArtIDs())
+      .then(() => window.location.assign(`/${this.state.currentArtID}`))
   }
 
   randomizeArtIDs = () => {
@@ -41,9 +45,9 @@ class App extends Component {
   }
 
 
-  render() {
+  render = () => {
     return (
-      <main>
+      <main className='main'>
         <BrowserRouter>
           <Switch>
             <Route 
@@ -51,8 +55,14 @@ class App extends Component {
             render={() => {
               return <LandingPage search={this.search}/>
             }}/>
-            {/* <ArtPage />
-            <AllFavorites /> */}
+            <Route 
+            exact path={'/:id'}
+            render={(match) => {
+              return <ArtPage currentArtID={match.match.params.id}/>
+            }}
+            />
+            {/* <AllFavorites /> */}
+            {/* URL error handling! have an error component */}
           </Switch>
         </BrowserRouter>
       </main>

@@ -1,5 +1,5 @@
 import './LandingPage.css'
-import Search from '../Search/Search'
+import Search from '../search/Search'
 
 const LandingPage = ({ search }) => {
   return (
