@@ -19,12 +19,18 @@ class App extends Component {
       error: ''
     }
   }
-  
-  search = async (searchTerm) => {
-    const allIDs = await fetchArtInfo('search?q=', searchTerm.searchTerm)
-    this.randomizeArtIDs(allIDs.objectIDs)
-    this.setState({ currentArtID: this.state.searchedArtIDs[0] })
+
+  search = (searchTerm) => {
+    fetchArtInfo('search?q=', searchTerm.searchTerm)
+      .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
+      .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
+      .catch(error => this.setState({ error: 'Please try again later' }))
   }
+  
+  // search = async (searchTerm) => {
+  //   const response = await fetchArtInfo('search?q=', searchTerm.searchTerm)
+  //   this.setState({ searchedArtIDs: response.objectIDs })
+  // }
   
   randomizeArtIDs = (searchedArtArray) => {
     for (var i = searchedArtArray.length - 1; i > 0; i--) {

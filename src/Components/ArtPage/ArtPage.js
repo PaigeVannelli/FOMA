@@ -1,6 +1,7 @@
 import './ArtPage.css'
 import React, { Component } from 'react'
 import ArtDetails from '../artDetails/ArtDetails'
+import fetchArtInfo from '../../ApiCalls'
 
 class ArtPage extends Component {
   constructor(props) {
@@ -26,11 +27,11 @@ class ArtPage extends Component {
   componentDidUpdate = (prevProps) => {
     // need to stop it from running when first loading 
     // should add a conditional to refetch when someone lands on the page 
-    if (prevProps.currentArtID !== this.props.currentArtID && this.props.currentArtID) {
-      fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
-        .then(response => response.json())
+    if (prevProps.currentArtID !== this.props.currentArtID) {
+      fetchArtInfo('objects/', this.props.currentArtID)
         .then(artObject => this.simplifyArtObject(artObject))
         .then(data => this.setState({ currentArt: data }))
+        .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
       }
     }
 
