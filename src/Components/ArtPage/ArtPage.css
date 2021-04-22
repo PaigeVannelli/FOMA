@@ -15,3 +15,12 @@
   max-height: 25em;
   max-width: auto;
 }
+
+.display-next-button {
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+  height: 3em;
+  width: 3em;
+  font-weight: 600;
+}
