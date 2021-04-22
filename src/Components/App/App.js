@@ -4,6 +4,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
 import AllFavorites from '../allFavorites/AllFavorites'
+import fetchArtInfo from '../../ApiCalls'
 
 //Change app to name! 
 class App extends Component {
@@ -19,11 +20,10 @@ class App extends Component {
     }
   }
   
-  search = (searchTerm) => {
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
-    .then(response => response.json())
-    .then(data => this.randomizeArtIDs(data.objectIDs))
-    .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
+  search = async (searchTerm) => {
+    const allIDs = await fetchArtInfo('search?q=', searchTerm.searchTerm)
+    this.randomizeArtIDs(allIDs.objectIDs)
+    this.setState({ currentArtID: this.state.searchedArtIDs[0] })
   }
   
   randomizeArtIDs = (searchedArtArray) => {
