@@ -22,26 +22,21 @@ class App extends Component {
   }
   
   search = (searchTerm) => {
-    // this.setState({ searchTerm: searchTerm})
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
     .then(response => response.json())
-    // .then(data => console.log(data.objectIDs))
-    .then(data => this.setState({ searchedArtIDs: data.objectIDs }))
+    .then(data => this.randomizeArtIDs(data.objectIDs))
     .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
-    // .then(() => this.randomizeArtIDs())
-    // .then(() => window.location.assign(`/${this.state.currentArtID}`))
   }
   
-  // randomizeArtIDs = () => {
-  //   let searchedArtArray = this.state.searchedArtIDs
-  //   for (var i = searchedArtArray.length - 1; i > 0; i--) {
-  //     var j = Math.floor(Math.random() * (i + 1));
-  //     var temp = searchedArtArray[i];
-  //     searchedArtArray[i] = searchedArtArray[j];
-  //     searchedArtArray[j] = temp;
-  //   }
-  //   this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
-  // }
+  randomizeArtIDs = (searchedArtArray) => {
+    for (var i = searchedArtArray.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = searchedArtArray[i];
+      searchedArtArray[i] = searchedArtArray[j];
+      searchedArtArray[j] = temp;
+    }
+    this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
+  }
   
   displayNextPiece = () => {
     console.log(this.state.currentArtIndex, this.state.searchedArtIDs.length)

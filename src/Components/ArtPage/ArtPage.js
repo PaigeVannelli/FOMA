@@ -23,15 +23,6 @@ class ArtPage extends Component {
     return cleanedArtObject
   }
 
-  // componentDidMount = () => {
-  //   if (this.props.currentArtID !== 0) {
-  //   fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
-  //     .then(response => response.json())
-  //     .then(artObject => this.simplifyArtObject(artObject))
-  //     .then(data => this.setState({ currentArt: data }))
-  //   }
-  // }
-
   componentDidUpdate = (prevProps) => {
     if (prevProps.currentArtID !== this.props.currentArtID) {
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
@@ -40,8 +31,6 @@ class ArtPage extends Component {
       .then(data => this.setState({ currentArt: data }))
     }
   }
-
-
 
   render = () => {
     return (
@@ -65,6 +54,3 @@ class ArtPage extends Component {
 }
 
 export default ArtPage
-// Should store state of current piece
-// will be given an id to fetch  
-// render both art details and art image 
