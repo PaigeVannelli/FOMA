@@ -39,7 +39,6 @@ class App extends Component {
   }
   
   displayNextPiece = () => {
-    // console.log(this.state.currentArtIndex, this.state.searchedArtIDs.length)
     if (this.state.currentArtIndex < this.state.searchedArtIDs.length) {
       let index = this.state.currentArtIndex + 1
       this.setState({ currentArtIndex: index}, () => console.log('nice'))
