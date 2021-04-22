@@ -62,24 +62,14 @@ class App extends Component {
             exact path={'/gallery'}
             render={() => {
               return (
-                this.currentArtID === 0 ? <Redirect to='/'/> : 
-              <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
+                <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
               )
             }}
             />
-            {/* <Route exact path="/gallery">
-              {
-              !this.state.currentArt.title ? 
-              <Redirect to='/'/> 
-              : 
-              <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
-              }
-            </Route> */}
             <Route 
             exact path={'/gallery'}
             render={() => {
               return (
-                // this.currentArtID === 0 ? <Redirect to='/'/> : 
                 <AllFavorites />
               )
             }}
