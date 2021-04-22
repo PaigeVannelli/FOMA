@@ -15,9 +15,6 @@ class App extends Component {
       currentArtIndex: 0,
       currentArt: {},
       favoritedArt: [],
-      // searchTerm: '',
-      //term is passed up from search then fetch call is run
-      //passed down to ArtDetails 
       error: ''
     }
   }
