@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   addFavorite = (favorite) => {
-    if (!this.state.AllFavorites.includes(favorite)) {
+    if (!this.state.favoritedArt.includes(favorite)) {
       let tempFavoritedArt = this.state.favoritedArt
       tempFavoritedArt.push(favorite)
       this.setState({ favoritedArt: tempFavoritedArt })
@@ -75,7 +75,7 @@ class App extends Component {
             }}
             />
             <Route 
-            exact path={'/gallery'}
+            exact path={'/favorites'}
             render={() => {
               return (
                 <AllFavorites favoritedArt={this.state.favoritedArt}/>
