@@ -58,16 +58,16 @@ class App extends Component {
       <main className='main'>
         <BrowserRouter>
           <Switch>
-            {this.state.searchedArtIDs.length > 0 && <Redirect to={`/${this.state.currentArtId}`} />}
+            {/* {this.state.searchedArtIDs.length > 0 && <Redirect to={`/${this.state.currentArtId}`} />} */}
             <Route 
             exact path='/'
             render={() => {
               return <LandingPage search={this.search}/>
             }}/>
             <Route 
-            exact path={'/:id'}
-            render={(match) => {
-              return <ArtPage currentArtID={match.match.params.id} displayNextPiece={this.displayNextPiece}/>
+            exact path={'/gallery'}
+            render={() => {
+              return <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
             }}
             />
             {/* <AllFavorites /> */}

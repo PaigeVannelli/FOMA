@@ -23,22 +23,42 @@ class ArtPage extends Component {
     return cleanedArtObject
   }
 
-  componentDidMount = () => {
+  // componentDidMount = () => {
+  //   if (this.props.currentArtID !== 0) {
+  //   fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
+  //     .then(response => response.json())
+  //     .then(artObject => this.simplifyArtObject(artObject))
+  //     .then(data => this.setState({ currentArt: data }))
+  //   }
+  // }
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.currentArtID !== this.props.currentArtID) {
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
       .then(response => response.json())
       .then(artObject => this.simplifyArtObject(artObject))
       .then(data => this.setState({ currentArt: data }))
+    }
   }
+
+
 
   render = () => {
     return (
       <section className='art-page'>
+        {
+          this.state.currentArt.title ?
+        <>
+          <div className='art-piece-container'>
+            <button onClick={this.props.displayNextPiece}>></button>
+            <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+          </div>
+          <ArtDetails currentArt={this.state.currentArt}/>
+        </>
+        :
+        <h1>loading</h1>
+        }
         {/* <ArtImage /> do I need this? */}
-        <div className='art-piece-container'>
-          <button onClick={this.props.displayNextPiece}>></button>
-          <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
-        </div>
-        <ArtDetails currentArt={this.state.currentArt}/>
       </section>
     )
   }

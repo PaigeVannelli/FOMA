@@ -1,5 +1,6 @@
 import './Search.css'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Search extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Search extends Component {
   }
 
   searchForInput = event => {
-    event.preventDefault()
+    // event.preventDefault()
     const searchTerm = {
       id: Date.now(),
       ...this.state,
@@ -37,7 +38,8 @@ class Search extends Component {
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
         />
-        <button onClick={event => this.searchForInput(event)}>Search</button>
+        <Link onClick={event => this.searchForInput(event)} to="/gallery">Search</Link>
+        {/* <Link to="/gallery" onClick={event => this.searchForInput(event)}>Search</Link> */}
       </form>
     )
   }
