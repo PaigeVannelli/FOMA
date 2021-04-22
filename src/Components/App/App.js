@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
+import AllFavorites from '../allFavorites/AllFavorites'
 
 //Change app to name! 
 class App extends Component {
@@ -14,9 +15,6 @@ class App extends Component {
       currentArtIndex: 0,
       currentArt: {},
       favoritedArt: [],
-      // searchTerm: '',
-      //term is passed up from search then fetch call is run
-      //passed down to ArtDetails 
       error: ''
     }
   }
@@ -46,6 +44,14 @@ class App extends Component {
     }
   }
 
+  addFavorite = (favorite) => {
+    if (!this.state.favoritedArt.includes(favorite)) {
+      let tempFavoritedArt = this.state.favoritedArt
+      tempFavoritedArt.push(favorite)
+      this.setState({ favoritedArt: tempFavoritedArt })
+    }
+  }
+
   render = () => {
     return (
       <main className='main'>
@@ -61,21 +67,25 @@ class App extends Component {
             exact path={'/gallery'}
             render={() => {
               return (
-                this.currentArtID === 0 ? <Redirect to='/'/> : 
-              <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
+                <ArtPage 
+                  currentArtID={this.state.currentArtID} 
+                  displayNextPiece={this.displayNextPiece} 
+                  addFavorite={this.addFavorite}
+                />
               )
             }}
             />
-            {/* <Route exact path="/gallery">
-              {
-              !this.state.currentArt.title ? 
-              <Redirect to='/'/> 
-              : 
-              <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
-              }
-            </Route> */}
-            {/* <AllFavorites /> */}
-            {/* URL error handling! have an error component */}
+            <Route 
+            exact path={'/favorites'}
+            render={() => {
+              return (
+                <AllFavorites favoritedArt={this.state.favoritedArt}/>
+              )
+            }}
+            />
+            <Route 
+            render={() => <Redirect to="/" />} 
+            />
           </Switch>
         </BrowserRouter>
       </main>

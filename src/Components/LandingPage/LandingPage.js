@@ -3,7 +3,7 @@ import Search from '../search/Search'
 
 const LandingPage = ({ search }) => {
   return (
-    <section>
+    <section className='landing-page-section'>
       <h1>TBD Title</h1>
       <h3>Dedicated to.....</h3>
       <Search search={search}/>

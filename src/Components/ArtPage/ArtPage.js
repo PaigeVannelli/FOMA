@@ -24,14 +24,16 @@ class ArtPage extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    // need to staop it from running when first loading 
+    // need to stop it from running when first loading 
+    // should add a conditional to refetch when someone lands on the page 
     if (prevProps.currentArtID !== this.props.currentArtID) {
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
-      .then(response => response.json())
-      .then(artObject => this.simplifyArtObject(artObject))
-      .then(data => this.setState({ currentArt: data }))
+      fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
+        .then(response => response.json())
+        .then(artObject => this.simplifyArtObject(artObject))
+        .then(data => this.setState({ currentArt: data }))
+      }
     }
-  }
+  // }
 
   render = () => {
     return (
@@ -43,7 +45,7 @@ class ArtPage extends Component {
             <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
             <button className='display-next-button' onClick={this.props.displayNextPiece}>></button>
           </div>
-          <ArtDetails currentArt={this.state.currentArt}/>
+          <ArtDetails currentArt={this.state.currentArt} addFavorite={this.props.addFavorite}/>
         </>
         :
         <h1>loading</h1>
