@@ -8,6 +8,7 @@ class ArtPage extends Component {
     super(props);
     this.state = {
       currentArt: {},
+      isFavorited: false,
       error: ''
     }
   }

@@ -1,8 +1,10 @@
 .art-details {
   display: flex;
   flex-direction: column;
-  background-color: rgb(194, 194, 194);
+  /* background-color: rgb(194, 194, 194); */
+  background-color: rgb(204, 201, 196);
   width: 30%;
+  box-shadow: 2px 5px 15px 5px black;
 }
 
 .button-nav {
@@ -14,10 +16,15 @@
 .button {
   height: 2em;
   margin: 15px;
+  outline: none;
+}
+
+.bookmark-active {
+  fill: blue;
 }
 
 .favorite-button{
-  background-color: rgb(194, 194, 194);
+  background-color: rgb(204, 201, 196);
   border: none;
 }
 
@@ -28,5 +35,9 @@
 
 .details {
   margin-left: 35px
+}
+
+.title {
+  margin-top: 100px;
 }
 

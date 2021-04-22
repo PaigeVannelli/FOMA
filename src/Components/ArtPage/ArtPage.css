@@ -14,7 +14,7 @@
 .art-piece {
   max-height: 25em;
   max-width: auto;
-  box-shadow: 3px 3px 5px 3px;
+  box-shadow: 3px 3px 5px 3px grey;
 }
 
 .display-next-button {
@@ -25,6 +25,7 @@
   width: 3em;
   font-weight: 600;
   justify-self: flex-end;
+  outline: none;
 }
 
 .display-next-button-container {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import home from '../../assets/home.svg'
 import favorites from '../../assets/heart.svg'
 import bookmark from '../../assets/bookmark.svg'
+import activeBookmark from '../../assets/bookmark-outline.svg'
 
 const ArtDetails = (props) => {
   
@@ -12,7 +13,7 @@ const ArtDetails = (props) => {
       title: props.currentArt.title,
       image: props.currentArt.image,
       artist: props.currentArt.artist,
-      key: props.currentArt.id
+      key: props.currentArt.id,
     }
     props.addFavorite(favoritePost)
     //change logo src
@@ -22,7 +23,9 @@ const ArtDetails = (props) => {
     <article className='art-details'>
       <nav className='button-nav'>
         <button className='favorite-button' onClick={submitFavorite}>
-          <img src={bookmark} className='button'/>
+          <img src={bookmark} className='button bookmark'/>
+          {/* <img src={this.props.isfavorited ? bookmark : activeBookmark} className='button bookmark'/> */}
+          {/* <img src={bookmark} className={`button ${this.props.isFavorited ? 'bookmark-active' : 'bookmark'}`}/> */}
         </button>
         <div>
           <Link to='/'>
