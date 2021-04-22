@@ -40,8 +40,8 @@ class ArtPage extends Component {
           this.state.currentArt.title ?
         <>
           <div className='art-piece-container'>
-            <button onClick={this.props.displayNextPiece}>></button>
             <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+            <button onClick={this.props.displayNextPiece}>></button>
           </div>
           <ArtDetails currentArt={this.state.currentArt}/>
         </>
