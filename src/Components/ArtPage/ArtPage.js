@@ -24,6 +24,7 @@ class ArtPage extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
+    // need to staop it from running when first loading 
     if (prevProps.currentArtID !== this.props.currentArtID) {
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
       .then(response => response.json())

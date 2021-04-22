@@ -39,12 +39,11 @@ class App extends Component {
   }
   
   displayNextPiece = () => {
-    console.log(this.state.currentArtIndex, this.state.searchedArtIDs.length)
+    // console.log(this.state.currentArtIndex, this.state.searchedArtIDs.length)
     if (this.state.currentArtIndex < this.state.searchedArtIDs.length) {
       let index = this.state.currentArtIndex + 1
-      console.log("test")
-      this.setState({ currentArtIndex: index })
-      this.setState({ currentArtID: this.state.searchedArtIDs[this.currentArtIndex] })
+      this.setState({ currentArtIndex: index}, () => console.log('nice'))
+      this.setState({ currentArtID: this.state.searchedArtIDs[index] })
     }
   }
 
@@ -62,9 +61,20 @@ class App extends Component {
             <Route 
             exact path={'/gallery'}
             render={() => {
-              return <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
+              return (
+                this.currentArtID === 0 ? <Redirect to='/'/> : 
+              <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
+              )
             }}
             />
+            {/* <Route exact path="/gallery">
+              {
+              !this.state.currentArt.title ? 
+              <Redirect to='/'/> 
+              : 
+              <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
+              }
+            </Route> */}
             {/* <AllFavorites /> */}
             {/* URL error handling! have an error component */}
           </Switch>
