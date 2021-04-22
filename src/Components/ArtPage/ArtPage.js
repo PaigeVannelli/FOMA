@@ -51,6 +51,8 @@ class ArtPage extends Component {
         <>
           <div className='art-piece-container'>
             <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+          </div>
+          <div className='display-next-button-container'>
             <button className='display-next-button' onClick={this.props.displayNextPiece}>></button>
           </div>
           <ArtDetails currentArt={this.state.currentArt} addFavorite={this.props.addFavorite}/>
