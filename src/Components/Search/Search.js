@@ -1,6 +1,7 @@
 import './Search.css'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import search from '../../assets/search.svg'
 
 class Search extends Component {
   constructor(props) {
@@ -30,15 +31,18 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
+      <form className='search'>
         <input
+        className='search-input'
         placeholder='Search here (ie. "monet" or "sunflowers")'
         type='text'
         name='searchTerm'
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
         />
-        <Link onClick={event => this.searchForInput(event)} to="/gallery">Search</Link>
+        <Link className='submit-button' onClick={event => this.searchForInput(event)} to="/gallery">
+          <img src={search} className='search-image'/>
+        </Link>
         {/* <Link to="/gallery" onClick={event => this.searchForInput(event)}>Search</Link> */}
       </form>
     )

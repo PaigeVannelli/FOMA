@@ -1,0 +1,24 @@
+.search {
+  height: 2em;
+  margin-top: 10px;
+  border: 0;
+  outline: none;
+  /* border-bottom: 2px solid grey; */
+}
+
+.search-input {
+  border: 0;
+  outline: none;
+  outline: none;
+  /* text-decoration: underline; */
+  border-bottom: 2px solid black;
+  width: 270px;
+}
+
+.submit-button {
+  height: 2em;
+}
+
+.search-image {
+  height: 1em;
+}
