@@ -4,6 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url('https://image.freepik.com/free-photo/white-room-museum-with-bench_110488-1697.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .title {
