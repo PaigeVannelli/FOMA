@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
+import AllFavorites from '../allFavorites/AllFavorites'
 
 //Change app to name! 
 class App extends Component {
@@ -74,8 +75,18 @@ class App extends Component {
               <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
               }
             </Route> */}
-            {/* <AllFavorites /> */}
-            {/* URL error handling! have an error component */}
+            <Route 
+            exact path={'/gallery'}
+            render={() => {
+              return (
+                // this.currentArtID === 0 ? <Redirect to='/'/> : 
+                <AllFavorites />
+              )
+            }}
+            />
+            <Route 
+            render={() => <Redirect to="/" />} 
+            />
           </Switch>
         </BrowserRouter>
       </main>
