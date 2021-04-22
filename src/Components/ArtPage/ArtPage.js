@@ -27,6 +27,14 @@ class ArtPage extends Component {
   componentDidUpdate = (prevProps) => {
     // need to stop it from running when first loading 
     // should add a conditional to refetch when someone lands on the page 
+    // if (prevProps.currentArtID !== this.props.currentArtID) {
+    // try {
+    //   const response = await fetchArtInfo('objects/', this.props.currentArtID)
+    //   this.setState({ searchedArtIDs: response.objectIDs })
+    //   this.setState({ currentArtID: this.state.searchedArtIDs[0] })
+    // } catch(error) {
+    //   this.setState({ error: error.message })
+    // }
     if (prevProps.currentArtID !== this.props.currentArtID) {
       fetchArtInfo('objects/', this.props.currentArtID)
         .then(artObject => this.simplifyArtObject(artObject))

@@ -28,8 +28,13 @@ class App extends Component {
   }
   
   // search = async (searchTerm) => {
-  //   const response = await fetchArtInfo('search?q=', searchTerm.searchTerm)
-  //   this.setState({ searchedArtIDs: response.objectIDs })
+  //   try {
+  //     const response = await fetchArtInfo('search?q=', searchTerm.searchTerm)
+  //     this.setState({ searchedArtIDs: response.objectIDs })
+  //     this.setState({ currentArtID: this.state.searchedArtIDs[0] })
+  //   } catch(error) {
+  //     this.setState({ error: error.message })
+  //   }
   // }
   
   randomizeArtIDs = (searchedArtArray) => {
