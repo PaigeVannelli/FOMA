@@ -70,7 +70,7 @@ class App extends Component {
             exact path={'/gallery'}
             render={() => {
               return (
-                <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece} addFavorite={this.addFavorite}/>
+                <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece} addFavorite={this.addFavorite} savedID={this.currentArtID}/>
               )
             }}
             />
