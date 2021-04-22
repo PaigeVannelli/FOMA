@@ -47,6 +47,14 @@ class App extends Component {
     }
   }
 
+  addFavorite = (favorite) => {
+    if (!this.state.AllFavorites.includes(favorite)) {
+      let tempFavoritedArt = this.state.favoritedArt
+      tempFavoritedArt.push(favorite)
+      this.setState({ favoritedArt: tempFavoritedArt })
+    }
+  }
+
   render = () => {
     return (
       <main className='main'>
@@ -62,7 +70,7 @@ class App extends Component {
             exact path={'/gallery'}
             render={() => {
               return (
-                <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece}/>
+                <ArtPage currentArtID={this.state.currentArtID} displayNextPiece={this.displayNextPiece} addFavorite={this.addFavorite}/>
               )
             }}
             />
@@ -70,7 +78,7 @@ class App extends Component {
             exact path={'/gallery'}
             render={() => {
               return (
-                <AllFavorites />
+                <AllFavorites favoritedArt={this.state.favoritedArt}/>
               )
             }}
             />

@@ -43,7 +43,7 @@ class ArtPage extends Component {
             <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
             <button className='display-next-button' onClick={this.props.displayNextPiece}>></button>
           </div>
-          <ArtDetails currentArt={this.state.currentArt}/>
+          <ArtDetails currentArt={this.state.currentArt} addFavorite={this.props.addFavorite}/>
         </>
         :
         <h1>loading</h1>
