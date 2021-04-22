@@ -2,9 +2,9 @@ import './Favorite.css'
 
 const Favorite = ({ key, title, image }) => {
   return (
-    <article key={key}>
-      <img src={image} />
-      <h2>{title}</h2>
+    <article key={key} className='favorite-art'>
+      <img src={image} className='favorite-image'/>
+      <p>{title}</p>
     </article>
   )
 }

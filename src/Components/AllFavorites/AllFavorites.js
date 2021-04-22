@@ -15,7 +15,7 @@ const AllFavorites = (props) => {
   })
 
   return (
-    <section>
+    <section className='all-favorite-art'>
       {allFavorites}
     </section>
   )
