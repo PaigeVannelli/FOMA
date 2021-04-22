@@ -26,14 +26,13 @@ class ArtPage extends Component {
   componentDidUpdate = (prevProps) => {
     // need to stop it from running when first loading 
     // should add a conditional to refetch when someone lands on the page 
-    if (prevProps.currentArtID !== this.props.currentArtID) {
+    if (prevProps.currentArtID !== this.props.currentArtID && this.props.currentArtID) {
       fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.currentArtID}`)
         .then(response => response.json())
         .then(artObject => this.simplifyArtObject(artObject))
         .then(data => this.setState({ currentArt: data }))
       }
     }
-  // }
 
   render = () => {
     return (
