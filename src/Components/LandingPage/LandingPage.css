@@ -1,6 +1,26 @@
 .landing-page-section {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 100px;
+  margin: 0
+}
+
+.subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.dedication {
+  font-family: 'Roboto', sans-serif;
+  margin: 8px;
 }
