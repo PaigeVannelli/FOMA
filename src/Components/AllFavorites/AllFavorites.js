@@ -6,8 +6,10 @@ const AllFavorites = (props) => {
     return (
       <Favorite 
         key={art.key}
+        id={art.id}
         title={art.title}
         image={art.image}
+        artist={art.artist}
       />
     )
   })

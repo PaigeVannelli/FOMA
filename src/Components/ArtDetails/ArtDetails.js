@@ -7,9 +7,15 @@ import bookmark from '../../assets/bookmark.svg'
 const ArtDetails = (props) => {
   
   const submitFavorite = () => {
-    const favoritePost = props.currentArt
+    const favoritePost = {
+      id: props.currentArt.id,
+      title: props.currentArt.title,
+      image: props.currentArt.image,
+      artist: props.currentArt.artist,
+      key: props.currentArt.id
+    }
     props.addFavorite(favoritePost)
-    //change image src
+    //change logo src
   }
   
   return (
