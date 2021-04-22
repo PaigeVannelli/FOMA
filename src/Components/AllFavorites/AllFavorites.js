@@ -5,6 +5,7 @@ const AllFavorites = (props) => {
   const allFavorites = props.favoritedArt.map(art => {
     return (
       <Favorite 
+        key={art.key}
         title={art.title}
         image={art.image}
       />
