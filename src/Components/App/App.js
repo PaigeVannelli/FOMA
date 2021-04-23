@@ -32,18 +32,20 @@ class App extends Component {
     return cleanedArtObject
   }
 
+  fetchPieceDetails = () => {
+    fetchArtInfo('objects/', this.state.currentArtID)
+      .then(artObject => this.simplifyArtObject(artObject))
+      .then(data => this.setState({ currentArt: data }))
+      .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
+  }
+
   search = (searchTerm) => {
     fetchArtInfo('search?q=', searchTerm.searchTerm)
       .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
       .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
-      .catch(error => this.setState({ error: 'Please try again later' }))
-      // .then(
-      //   fetchArtInfo('objects/', this.state.currentArtID)
-      //     .then(artObject => this.simplifyArtObject(artObject))
-      //     .then(data => this.setState({ currentArt: data }))
-      //     .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
-      // )
-  }
+      .catch(() => this.setState({ error: 'Please try again later' }))
+      .then(() => this.fetchPieceDetails())
+    }
   
   // search = async (searchTerm) => {
   //   try {
@@ -70,6 +72,7 @@ class App extends Component {
       let index = this.state.currentArtIndex + 1
       this.setState({ currentArtIndex: index}, () => console.log('nice'))
       this.setState({ currentArtID: this.state.searchedArtIDs[index] })
+      this.fetchPieceDetails()
     }
   }
 
@@ -98,6 +101,7 @@ class App extends Component {
               return (
                 <ArtPage 
                   currentArtID={this.state.currentArtID} 
+                  currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
                 />

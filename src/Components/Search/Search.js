@@ -33,6 +33,7 @@ class Search extends Component {
     return (
       <form className='search'>
         <input
+        data-cy='search-input'
         className='search-input'
         placeholder='Search here (ie. "monet" or "sunflowers")'
         type='text'
@@ -40,7 +41,12 @@ class Search extends Component {
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
         />
-        <Link className='submit-button' onClick={event => this.searchForInput(event)} to="/gallery">
+        <Link 
+          data-cy='search-button' 
+          className='submit-button' 
+          onClick={event => this.searchForInput(event)} 
+          to="/gallery"
+        >
           <img src={search} className='search-image'/>
         </Link>
         {/* <Link to="/gallery" onClick={event => this.searchForInput(event)}>Search</Link> */}
