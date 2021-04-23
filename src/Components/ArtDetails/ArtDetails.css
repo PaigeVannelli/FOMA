@@ -8,12 +8,6 @@
   box-shadow: 2px 5px 15px 5px black;
 }
 
-/* .button-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
-
 .art-display-nav {
   display: flex;
   flex-direction: row;
@@ -23,16 +17,13 @@
 .button {
   height: 2em;
   margin: 15px;
-  outline: none;
-}
-
-.bookmark-active {
-  fill: blue;
+  outline: none !important;
 }
 
 .favorite-button{
   background-color: rgb(204, 201, 196);
   border: none;
+  outline: none !important
 }
 
 /* .home {
@@ -45,6 +36,6 @@
 }
 
 .title {
-  margin-top: 100px;
+  margin-top: 40%;
 }
 

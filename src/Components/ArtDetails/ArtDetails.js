@@ -17,16 +17,14 @@ const ArtDetails = (props) => {
       key: props.currentArt.id,
     }
     props.addFavorite(favoritePost)
-    //change logo src
   }
   
   return (
     <article className='art-details'>
       <div className='art-display-nav'>
         <button className='favorite-button' onClick={submitFavorite}>
-            <img src={bookmark} className='button bookmark'/>
-            {/* <img src={this.props.isfavorited ? bookmark : activeBookmark} className='button bookmark'/> */}
-            {/* <img src={bookmark} className={`button ${this.props.isFavorited ? 'bookmark-active' : 'bookmark'}`}/> */}
+          {props.isFavorited && <img src={activeBookmark} className='button'/> }
+          {!props.isFavorited && <img src={bookmark} className='button'/> }
         </button>
         <Nav submitFavorite={props.submitFavorite} />
       </div>

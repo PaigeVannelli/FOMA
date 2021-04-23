@@ -18,6 +18,7 @@ class App extends Component {
       currentArtIndex: 0,
       currentArt: {},
       favoritedArt: [],
+      isFavorited: false,
       error: ''
     }
   }
@@ -37,7 +38,7 @@ class App extends Component {
   fetchPieceDetails = (currentID) => {
     fetchArtInfo('objects/', currentID)
       .then(artObject => this.simplifyArtObject(artObject))
-      .then(data => this.setState({ currentArt: data, loading: false}))
+      .then(data => this.setState({ currentArt: data, loading: false, isFavorited: false }))
       .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
   }
 
@@ -84,7 +85,7 @@ class App extends Component {
     if (!this.state.favoritedArt.includes(favorite)) {
       let tempFavoritedArt = this.state.favoritedArt
       tempFavoritedArt.push(favorite)
-      this.setState({ favoritedArt: tempFavoritedArt })
+      this.setState({ favoritedArt: tempFavoritedArt, isFavorited: true })
     }
   }
 
@@ -110,6 +111,7 @@ class App extends Component {
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
+                  isFavorited={this.state.isFavorited}
                 />
               )
             }}
