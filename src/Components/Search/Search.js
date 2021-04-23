@@ -41,15 +41,17 @@ class Search extends Component {
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
         />
-        <Link 
-          data-cy='search-button' 
-          className='submit-button' 
-          onClick={event => this.searchForInput(event)} 
-          to="/gallery"
-        >
-          <img src={search} className='search-image'/>
-        </Link>
-        {/* <Link to="/gallery" onClick={event => this.searchForInput(event)}>Search</Link> */}
+        {
+          this.state.searchTerm &&
+          <Link 
+            data-cy='search-button' 
+            className='submit-button' 
+            onClick={event => this.searchForInput(event)} 
+            to="/gallery"
+          >
+            <img src={search} className='search-image'/>
+          </Link>
+        }
       </form>
     )
   }
