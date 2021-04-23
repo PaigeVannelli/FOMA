@@ -1,11 +1,19 @@
 .art-details {
   display: flex;
   flex-direction: column;
-  background-color: rgb(194, 194, 194);
+  /* background-color: rgb(194, 194, 194); */
+  background-color: rgb(204, 201, 196);
   width: 30%;
+  box-shadow: 2px 5px 15px 5px black;
 }
 
-.button-nav {
+/* .button-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+.art-display-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,22 +22,28 @@
 .button {
   height: 2em;
   margin: 15px;
+  outline: none;
+}
+
+.bookmark-active {
+  fill: blue;
 }
 
 .favorite-button{
-  background-color: rgb(194, 194, 194);
+  background-color: rgb(204, 201, 196);
   border: none;
 }
 
-.home {
+/* .home {
   height: 2em;
   margin: 15px 15px 15px 35px;
-}
+} */
 
 .details {
   margin-left: 35px
 }
 
 .title {
-  margin-top: 20%;
+  margin-top: 100px;
 }
+

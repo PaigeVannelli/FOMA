@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import home from '../../assets/home.svg'
 import favorites from '../../assets/heart.svg'
 import bookmark from '../../assets/bookmark.svg'
+import activeBookmark from '../../assets/bookmark-outline.svg'
+import Nav from '../nav/Nav'
 
 const ArtDetails = (props) => {
   
@@ -12,7 +14,7 @@ const ArtDetails = (props) => {
       title: props.currentArt.title,
       image: props.currentArt.image,
       artist: props.currentArt.artist,
-      key: props.currentArt.id
+      key: props.currentArt.id,
     }
     props.addFavorite(favoritePost)
     //change logo src
@@ -20,19 +22,14 @@ const ArtDetails = (props) => {
   
   return (
     <article className='art-details'>
-      <nav className='button-nav'>
+      <div className='art-display-nav'>
         <button className='favorite-button' onClick={submitFavorite}>
-          <img src={bookmark} className='button'/>
+            <img src={bookmark} className='button bookmark'/>
+            {/* <img src={this.props.isfavorited ? bookmark : activeBookmark} className='button bookmark'/> */}
+            {/* <img src={bookmark} className={`button ${this.props.isFavorited ? 'bookmark-active' : 'bookmark'}`}/> */}
         </button>
-        <div>
-          <Link to='/'>
-            <img src={home} className='home button'/>
-          </Link>
-          <Link to='/favorites'>
-            <img src={favorites} className='favorites button'/>
-          </Link>
-        </div>
-      </nav>
+        <Nav submitFavorite={props.submitFavorite} />
+      </div>
       <h1 className='title details'>Title: {props.currentArt.title}</h1>
       <p className='details'>Medium: {props.currentArt.medium}</p>
       <p className='details'>Artist: {props.currentArt.artist}</p>

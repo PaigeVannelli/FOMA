@@ -1,5 +1,6 @@
 import './AllFavorites.css'
 import Favorite from '../favorite/Favorite'
+import Nav from '../nav/Nav'
 
 const AllFavorites = (props) => {
   const allFavorites = props.favoritedArt.map(art => {
@@ -15,8 +16,11 @@ const AllFavorites = (props) => {
   })
 
   return (
-    <section className='all-favorite-art'>
-      {allFavorites}
+    <section className='all-favorites-page'>
+      <div className='all-favorite-art'>
+        {allFavorites}
+      </div>
+      <Nav className='nav-buttons'/>
     </section>
   )
 }

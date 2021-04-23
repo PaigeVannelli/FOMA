@@ -4,6 +4,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
 import AllFavorites from '../allFavorites/AllFavorites'
+import fetchArtInfo from '../../ApiCalls'
 
 //Change app to name! 
 class App extends Component {
@@ -19,12 +20,40 @@ class App extends Component {
     }
   }
   
-  search = (searchTerm) => {
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm.searchTerm}`)
-    .then(response => response.json())
-    .then(data => this.randomizeArtIDs(data.objectIDs))
-    .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
+  simplifyArtObject = (artObject) => {
+    let cleanedArtObject = {}
+    cleanedArtObject.id = artObject.objectID
+    cleanedArtObject.title = artObject.title
+    cleanedArtObject.artist = artObject.artistDisplayName
+    cleanedArtObject.medium = artObject.medium
+    cleanedArtObject.date = artObject.objectDate
+    cleanedArtObject.image = artObject.primaryImage
+    cleanedArtObject.smallImage = artObject.primarySmallImage
+    return cleanedArtObject
   }
+
+  search = (searchTerm) => {
+    fetchArtInfo('search?q=', searchTerm.searchTerm)
+      .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
+      .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
+      .catch(error => this.setState({ error: 'Please try again later' }))
+      // .then(
+      //   fetchArtInfo('objects/', this.state.currentArtID)
+      //     .then(artObject => this.simplifyArtObject(artObject))
+      //     .then(data => this.setState({ currentArt: data }))
+      //     .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
+      // )
+  }
+  
+  // search = async (searchTerm) => {
+  //   try {
+  //     const response = await fetchArtInfo('search?q=', searchTerm.searchTerm)
+  //     this.setState({ searchedArtIDs: response.objectIDs })
+  //     this.setState({ currentArtID: this.state.searchedArtIDs[0] })
+  //   } catch(error) {
+  //     this.setState({ error: error.message })
+  //   }
+  // }
   
   randomizeArtIDs = (searchedArtArray) => {
     for (var i = searchedArtArray.length - 1; i > 0; i--) {

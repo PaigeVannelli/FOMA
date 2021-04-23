@@ -1,14 +1,14 @@
 .favorite-art {
-  max-height: 20em;
-  max-width: 20em;
-  margin: 50px;
+  max-height: 13em;
+  max-width: 13em;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .favorite-image {
-  max-height: 15em;
-  max-width: 15em;
+  max-height: 10em;
+  max-width: 10em;
   box-shadow: 3px 3px 15px;
 }
