@@ -6,14 +6,12 @@ import favorites from '../../assets/heart.svg'
 const Nav = () => {
   return (
     <nav className='button-nav'>
-      <div>
-        <Link to='/'>
-          <img src={home} className='home button'/>
-        </Link>
-        <Link to='/favorites'>
-          <img src={favorites} className='favorites button'/>
-        </Link>
-      </div>
+      <Link to='/'>
+        <img src={home} className='home button'/>
+      </Link>
+      <Link to='/favorites'>
+        <img src={favorites} className='favorites button'/>
+      </Link>
     </nav>
   ) 
 }

@@ -1,6 +1,19 @@
+.all-favorites-page {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  /* flex-wrap: wrap; */
+}
+
 .all-favorite-art {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
+  justify-content: space-around;
+}
+
+.nav-buttons {
+  height: 100%;
+  position: absolute;
+  right: 0;
 }

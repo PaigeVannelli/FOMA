@@ -16,9 +16,11 @@ const AllFavorites = (props) => {
   })
 
   return (
-    <section className='all-favorite-art'>
-      {allFavorites}
-      <Nav />
+    <section className='all-favorites-page'>
+      <div className='all-favorite-art'>
+        {allFavorites}
+      </div>
+      <Nav className='nav-buttons'/>
     </section>
   )
 }
