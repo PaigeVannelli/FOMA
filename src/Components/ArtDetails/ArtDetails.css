@@ -7,7 +7,13 @@
   box-shadow: 2px 5px 15px 5px black;
 }
 
-.button-nav {
+/* .button-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+.art-display-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -28,10 +34,10 @@
   border: none;
 }
 
-.home {
+/* .home {
   height: 2em;
   margin: 15px 15px 15px 35px;
-}
+} */
 
 .details {
   margin-left: 35px
