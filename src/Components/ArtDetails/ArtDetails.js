@@ -30,10 +30,10 @@ const ArtDetails = (props) => {
         </button>
         <Nav submitFavorite={props.submitFavorite} />
       </div>
-      <h1 className='title details'>Title: {props.currentArt.title}</h1>
-      <p className='details'>Medium: {props.currentArt.medium}</p>
-      <p className='details'>Artist: {props.currentArt.artist}</p>
-      <p className='details'>Date: {props.currentArt.date}</p>
+      <h1 className='title details'>Title: {props.currentArt.title ? props.currentArt.title : 'unknown'}</h1>
+      <p className='details'>Medium: {props.currentArt.medium ? props.currentArt.medium : 'unknown'}</p>
+      <p className='details'>Artist: {props.currentArt.artist ? props.currentArt.artist : 'unknown'}</p>
+      <p className='details'>Date: {props.currentArt.date ? props.currentArt.date : 'unknown'}</p>
     </article>
   )
 }
