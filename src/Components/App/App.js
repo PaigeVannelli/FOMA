@@ -76,7 +76,7 @@ class App extends Component {
       let index = this.state.currentArtIndex + 1
       this.setState({ currentArtIndex: index}, () => console.log('nice'))
       this.setState({ currentArtID: this.state.searchedArtIDs[index] })
-      // fetchArtInfo()
+      this.fetchPieceDetails()
     }
   }
 
