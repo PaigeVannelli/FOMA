@@ -38,7 +38,8 @@ const ArtPage = (props) => {
   return (
     <section className='art-page'>
       {
-        props.currentArtID ?
+        // props.currentArtID ?
+        !props.loading ?
       <>
         <div className='art-piece-container'>
           <img 
@@ -50,11 +51,13 @@ const ArtPage = (props) => {
         <div className='display-next-button-container'>
           <button className='display-next-button' onClick={props.displayNextPiece}>></button>
         </div>
-        <ArtDetails currentArt={props.currentArt} addFavorite={props.addFavorite}/>
       </>
       :
-      <h1>loading</h1>
-      }
+      <div className='art-piece-container'>
+        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      </div>
+    }
+    <ArtDetails className='art-details' currentArt={props.currentArt} addFavorite={props.addFavorite}/>
     </section>
   )
 }

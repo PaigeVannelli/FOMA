@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       searchedArtIDs: [],
       currentArtID: 0,
+      loading: true,
       //If I'm going based off index should I get rid of artId?
       currentArtIndex: 0,
       currentArt: {},
@@ -36,11 +37,12 @@ class App extends Component {
   fetchPieceDetails = (currentID) => {
     fetchArtInfo('objects/', currentID)
       .then(artObject => this.simplifyArtObject(artObject))
-      .then(data => this.setState({ currentArt: data }))
+      .then(data => this.setState({ currentArt: data, loading: false}))
       .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
   }
 
   search = (searchTerm) => {
+    this.setState({loading: true})
     fetchArtInfo('search?q=', searchTerm.searchTerm)
       .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
       .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
@@ -70,6 +72,7 @@ class App extends Component {
   
   displayNextPiece = () => {
     if (this.state.currentArtIndex < this.state.searchedArtIDs.length) {
+      this.setState({loading: true})
       let index = this.state.currentArtIndex + 1
       this.setState({ currentArtIndex: index}, () => console.log('nice'))
       this.setState({ currentArtID: this.state.searchedArtIDs[index] }, () => console.log('it worked'))
@@ -101,6 +104,7 @@ class App extends Component {
             render={() => {
               return (
                 <ArtPage 
+                  loading={this.state.loading}
                   validSearch={this.state.searchedArtIDs.length > 0}
                   currentArtID={this.state.currentArtID} 
                   currentArt={this.state.currentArt} 
