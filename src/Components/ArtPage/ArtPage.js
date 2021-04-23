@@ -1,7 +1,6 @@
 import './ArtPage.css'
 import React, { Component } from 'react'
 import ArtDetails from '../artDetails/ArtDetails'
-import fetchArtInfo from '../../ApiCalls'
 
 const ArtPage = (props) => {
   return (
@@ -10,7 +9,11 @@ const ArtPage = (props) => {
         props.currentArtID ?
       <>
         <div className='art-piece-container'>
-          <img src={props.currentArt.image} alt={props.currentArt.title} className='art-piece'/>
+          <img 
+            src={props.currentArt.image} 
+            alt={props.currentArt.title} 
+            className='art-piece'
+          />
         </div>
         <div className='display-next-button-container'>
           <button className='display-next-button' onClick={props.displayNextPiece}>></button>
@@ -20,7 +23,6 @@ const ArtPage = (props) => {
       :
       <h1>loading</h1>
       }
-      {/* <ArtImage /> do I need this? */}
     </section>
   )
 }
