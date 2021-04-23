@@ -7,17 +7,11 @@ class ArtPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentArt: {},
-      isFavorited: false,
+      // currentArt: {},
+      // isFavorited: false,
       error: ''
     }
   }
-
-  // componentDidUpdate = (prevProps) => {
-  //   if (prevProps.currentArt !== this.state.currentArt) {
-  //     this.setState({ currentArt: this.props.currentArt})
-  //   }
-  // }
 
   simplifyArtObject = (artObject) => {
     let cleanedArtObject = {}
@@ -42,28 +36,37 @@ class ArtPage extends Component {
   //   // } catch(error) {
   //   //   this.setState({ error: error.message })
   //   // }
-    if (prevProps.currentArtID !== this.props.currentArtID) {
-      fetchArtInfo('objects/', this.props.currentArtID)
-        .then(artObject => this.simplifyArtObject(artObject))
-        .then(data => this.setState({ currentArt: data }))
-        .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
-      }
+    // if (prevProps.currentArtID !== this.props.currentArtID) {
+    //   fetchArtInfo('objects/', this.props.currentArtID)
+    //     .then(artObject => this.simplifyArtObject(artObject))
+    //     .then(data => this.setState({ currentArt: data }))
+    //     .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
+    //   }
     }
 
   render = () => {
     return (
       <section className='art-page'>
         {
-          this.state.currentArt.title ?
+          this.props.currentArtID ?
         <>
           <div className='art-piece-container'>
-            <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+            <img src={this.props.currentArt.image} alt={this.props.currentArt.title} className='art-piece'/>
           </div>
           <div className='display-next-button-container'>
             <button className='display-next-button' onClick={this.props.displayNextPiece}>></button>
           </div>
-          <ArtDetails currentArt={this.state.currentArt} addFavorite={this.props.addFavorite}/>
+          <ArtDetails currentArt={this.props.currentArt} addFavorite={this.props.addFavorite}/>
         </>
+        // <>
+        //   <div className='art-piece-container'>
+        //     <img src={this.state.currentArt.image} alt={this.state.currentArt.title} className='art-piece'/>
+        //   </div>
+        //   <div className='display-next-button-container'>
+        //     <button className='display-next-button' onClick={this.props.displayNextPiece}>></button>
+        //   </div>
+        //   <ArtDetails currentArt={this.state.currentArt} addFavorite={this.props.addFavorite}/>
+        // </>
         :
         <h1>loading</h1>
         }
