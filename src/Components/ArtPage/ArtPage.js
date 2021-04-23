@@ -57,7 +57,7 @@ const ArtPage = (props) => {
         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>
     }
-    <ArtDetails className='art-details' currentArt={props.currentArt} addFavorite={props.addFavorite}/>
+    <ArtDetails currentArt={props.currentArt} addFavorite={props.addFavorite}/>
     </section>
   )
 }
