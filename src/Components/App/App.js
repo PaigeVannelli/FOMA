@@ -13,13 +13,11 @@ class App extends Component {
     this.state = {
       searchedArtIDs: [],
       loading: true,
-      // lastPiece: false,
-      //If I'm going based off index should I get rid of artId?
       currentArtIndex: 0,
       currentArt: {
         isFavorited: false,
-        lastPiece: false
       },
+      lastPiece: false,
       favoritedArt: [],
       // isFavorited: false,
       error: ''
@@ -44,7 +42,7 @@ class App extends Component {
     cleanedArtObject.date = artObject.objectDate
     cleanedArtObject.image = artObject.primaryImage
     cleanedArtObject.smallImage = artObject.primarySmallImage
-    cleanedArtObject.isFavorited = false 
+    cleanedArtObject.isFavorited = false
     return cleanedArtObject
   }
 
@@ -56,11 +54,27 @@ class App extends Component {
     }
   }
 
+  checkIfFavorited = (artPiece) => {
+    this.state.favoritedArt.forEach(piece => {
+      if (piece.title === artPiece.title) {
+        this.setState(prevState => ({
+          currentArt: {                 
+              ...prevState.currentArt,    
+              isFavorited: true      
+          }
+        }))
+      }
+    })
+  }
+
   fetchPieceDetails = (currentID) => {
     this.checkLastPiece()
     fetchArtInfo('objects/', currentID)
-      .then(artObject => this.simplifyArtObject(artObject))
-      .then(data => this.setState({ currentArt: data, loading: false, isFavorited: false }))
+      .then(data => {
+        const artObject = this.simplifyArtObject(data)
+        this.setState({ currentArt: artObject, loading: false })
+        this.checkIfFavorited(data)
+      })
       .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
   }
 
@@ -105,9 +119,16 @@ class App extends Component {
     if (!this.state.favoritedArt.includes(favorite)) {
       let tempFavoritedArt = this.state.favoritedArt
       tempFavoritedArt.push(favorite)
-      this.setState({ favoritedArt: tempFavoritedArt, isFavorited: true })
+      this.setState({ favoritedArt: tempFavoritedArt })
+      this.setState(prevState => ({
+        currentArt: {                  
+            ...prevState.currentArt,    
+            isFavorited: true       
+        }
+      }))
     }
   }
+
 
   resetSearch = () => {
     this.setState({ currentArtIndex: 0, lastPiece: false })
@@ -134,7 +155,6 @@ class App extends Component {
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
-                  isFavorited={this.state.isFavorited}
                   lastPiece={this.state.lastPiece}
                   resetSearch={this.resetSearch}
                 />
