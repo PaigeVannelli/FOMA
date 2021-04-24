@@ -2,6 +2,7 @@ import './Search.css'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import search from '../../assets/search.svg'
+import PropTypes from 'prop-types'
 
 class Search extends Component {
   constructor(props) {
@@ -55,6 +56,10 @@ class Search extends Component {
       </form>
     )
   }
+}
+
+Search.propTypes = {
+  search: PropTypes.func
 }
 
 export default Search

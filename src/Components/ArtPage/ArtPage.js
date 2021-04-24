@@ -1,6 +1,7 @@
 import './ArtPage.css'
 // import React, { Component } from 'react'
 import ArtDetails from '../artDetails/ArtDetails'
+import PropTypes from 'prop-types'
 
 const ArtPage = (props) => {
 
@@ -60,6 +61,16 @@ const ArtPage = (props) => {
     <ArtDetails currentArt={props.currentArt} addFavorite={props.addFavorite} isFavorited={props.isFavorited}/>
     </section>
   )
+}
+
+ArtPage.propTypes = {
+  loading: PropTypes.bool,
+  validSearch: PropTypes.bool,
+  currentArtID: PropTypes.number,
+  currentArt: PropTypes.object,
+  displayNextPiece: PropTypes.func, 
+  addFavorite: PropTypes.func,
+  isFavorited: PropTypes.bool
 }
 
 export default ArtPage

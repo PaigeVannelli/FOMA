@@ -5,6 +5,7 @@ import './ArtDetails.css'
 import bookmark from '../../assets/bookmark.svg'
 import activeBookmark from '../../assets/bookmark-outline.svg'
 import Nav from '../nav/Nav'
+import PropTypes from 'prop-types'
 
 const ArtDetails = (props) => {
   
@@ -34,6 +35,12 @@ const ArtDetails = (props) => {
       <p className='details'>Date: {props.currentArt.date ? props.currentArt.date : 'unknown'}</p>
     </article>
   )
+}
+
+ArtDetails.propTypes = {
+  currentArt: PropTypes.object,
+  addFavorite: PropTypes.func, 
+  isFavorited: PropTypes.bool
 }
 
 export default ArtDetails

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import home from '../../assets/home.svg'
 import favorites from '../../assets/heart.svg'
 import search from '../../assets/search.svg'
+import PropTypes from 'prop-types'
 
 const Nav = () => {
   return (
@@ -22,6 +23,10 @@ const Nav = () => {
       }
     </nav>
   ) 
+}
+
+Nav.propTypes = {
+  submitFavorite: PropTypes.func
 }
 
 export default Nav
