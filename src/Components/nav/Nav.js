@@ -9,7 +9,9 @@ const Nav = () => {
   return (
     <nav className='button-nav'>
       <Link to='/'>
-        <img src={home} className='home button' alt='home-button'/>
+        <button>
+          <img src={home} className='home button' alt='home-button'/>
+        </button>
       </Link>
       {
         useLocation().pathname === '/favorites' ?

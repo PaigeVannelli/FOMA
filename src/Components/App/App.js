@@ -14,6 +14,7 @@ class App extends Component {
       searchedArtIDs: [],
       currentArtID: 0,
       loading: true,
+      lastPiece: false,
       //If I'm going based off index should I get rid of artId?
       currentArtIndex: 0,
       currentArt: {},
@@ -35,7 +36,16 @@ class App extends Component {
     return cleanedArtObject
   }
 
+  checkLastPiece = () => {
+    if ((this.state.currentArtIndex + 2) === this.state.searchedArtIDs.length) {
+      this.setState({ lastPiece: true })
+    } else {
+      this.setState({ lastPiece: false })
+    }
+  }
+
   fetchPieceDetails = (currentID) => {
+    this.checkLastPiece()
     fetchArtInfo('objects/', currentID)
       .then(artObject => this.simplifyArtObject(artObject))
       .then(data => this.setState({ currentArt: data, loading: false, isFavorited: false }))
@@ -72,13 +82,13 @@ class App extends Component {
   }
   
   displayNextPiece = () => {
-    if (this.state.currentArtIndex < this.state.searchedArtIDs.length) {
+    if (this.state.currentArtIndex + 1 < this.state.searchedArtIDs.length) {
       this.setState({loading: true})
       let index = this.state.currentArtIndex + 1
       this.setState({ currentArtIndex: index}, () => console.log('nice'))
       this.setState({ currentArtID: this.state.searchedArtIDs[index] }, () => console.log('it worked'))
       this.fetchPieceDetails(this.state.searchedArtIDs[index])
-    }
+    } 
   }
 
   addFavorite = (favorite) => {
@@ -112,6 +122,7 @@ class App extends Component {
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
                   isFavorited={this.state.isFavorited}
+                  lastPiece={this.state.lastPiece}
                 />
               )
             }}
