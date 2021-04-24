@@ -79,7 +79,7 @@ describe('Art Page Functionality', () => {
 })
 
 describe('Favoriting View and Functionality', () => {
-  before(() => {
+  beforeEach(() => {
     cy.intercept('https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {fixture: 'artIDs'})
     .intercept('https://collectionapi.metmuseum.org/public/collection/v1/objects/436965', {fixture: 'art'})
     .visit('http://localhost:3000/')
@@ -113,7 +113,7 @@ describe('Favoriting View and Functionality', () => {
   it('Should allow user to view all favorited art pieces', () => {
     cy.intercept('https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {fixture: 'artIDs'})
     .intercept('https://collectionapi.metmuseum.org/public/collection/v1/objects/436965', {fixture: 'art'})
-    cy.visit('http://localhost:3000/')
+    .visit('http://localhost:3000/')
     .get('[data-cy=search-input]')
     .type('monet')
     .get('[data-cy=search-button]')
@@ -128,7 +128,29 @@ describe('Favoriting View and Functionality', () => {
     .contains('The Monet Family')
   });
 
+  it('Should allow the user to return to searched art', () => {
+    cy.get('[data-cy=view-favorites]')
+    .click()
+    .get('[data-cy=search-button]')
+    .click()
+    .get('[data-cy=art-image]')
+    .should('have.attr', 'src')
+    .should('include','DT1562.jpg')
+    .get('[data-cy=art-title]')
+    .contains('The Monet Family')
+    .get('[data-cy=art-artist]')
+    .contains('Edouard Manet')
+  });
 
-  
+  it.only('Should allow the user to return home', () => {
+    cy.get('[data-cy=view-favorites]')
+    .click()
+    .get('[data-cy=home-button]')
+    .click()
+    .get('h1')
+    .contains('FOMO')
+    .get('h2')
+    .contains('Museum of Modern Art')
+  });  
 })
 

@@ -16,7 +16,12 @@ const Nav = ({ resetSearch }) => {
       {
         useLocation().pathname === '/favorites' ?
         <Link to='/gallery'>
-          <img src={search} className='favorites button' alt='search-button'/>
+          <img 
+            data-cy='search-button' 
+            src={search} 
+            className='button' 
+            alt='search-button'
+          />
         </Link>
         :
         <Link to='/favorites'>
