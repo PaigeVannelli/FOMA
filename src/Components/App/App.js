@@ -81,10 +81,19 @@ class App extends Component {
   search = (searchTerm) => {
     this.setState({loading: true})
     fetchArtInfo('search?q=', searchTerm.searchTerm)
-      .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
-      .catch(() => this.setState({ error: 'Please try again later' }))
+    .then(allArt => this.setState({ searchedArtIDs: allArt.objectIDs }))
+    .catch(() => this.setState({ error: 'Please try again later' }))
       .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     }
+
+  //Randomize function removed for testing 
+  // search = (searchTerm) => {
+  //   this.setState({loading: true})
+  //   fetchArtInfo('search?q=', searchTerm.searchTerm)
+  //     .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
+  //     .catch(() => this.setState({ error: 'Please try again later' }))
+  //     .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
+  //   }
   
   // search = async (searchTerm) => {
   //   try {

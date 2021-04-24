@@ -67,6 +67,7 @@ const ArtPage = (props) => {
       <>
         <div className='art-piece-container'>
           <img 
+            data-cy='art-image'
             src={props.currentArt.image} 
             alt={props.currentArt.title} 
             className='art-piece'
