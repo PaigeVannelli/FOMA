@@ -1,6 +1,7 @@
 import './AllFavorites.css'
 import Favorite from '../favorite/Favorite'
 import Nav from '../nav/Nav'
+import PropTypes from 'prop-types';
 
 const AllFavorites = (props) => {
   const allFavorites = props.favoritedArt.map(art => {
@@ -23,6 +24,10 @@ const AllFavorites = (props) => {
       <Nav className='nav-buttons'/>
     </section>
   )
+}
+
+AllFavorites.propTypes = {
+  favoritedArt: PropTypes.array
 }
 
 export default AllFavorites
