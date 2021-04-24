@@ -1,5 +1,5 @@
 import './ArtPage.css'
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 import ArtDetails from '../artDetails/ArtDetails'
 
 const ArtPage = (props) => {

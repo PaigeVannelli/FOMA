@@ -1,7 +1,7 @@
 import './ArtDetails.css'
-import { Link } from 'react-router-dom'
-import home from '../../assets/home.svg'
-import favorites from '../../assets/heart.svg'
+// import { Link } from 'react-router-dom'
+// import home from '../../assets/home.svg'
+// import favorites from '../../assets/heart.svg'
 import bookmark from '../../assets/bookmark.svg'
 import activeBookmark from '../../assets/bookmark-outline.svg'
 import Nav from '../nav/Nav'
@@ -23,8 +23,8 @@ const ArtDetails = (props) => {
     <article className='art-details'>
       <div className='art-display-nav'>
         <button className='favorite-button' onClick={submitFavorite}>
-          {props.isFavorited && <img src={activeBookmark} className='button'/> }
-          {!props.isFavorited && <img src={bookmark} className='button'/> }
+          {props.isFavorited && <img src={activeBookmark} className='button' alt='active-bookmark'/> }
+          {!props.isFavorited && <img src={bookmark} className='button'alt='bookmark'/> }
         </button>
         <Nav submitFavorite={props.submitFavorite} />
       </div>

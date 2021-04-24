@@ -49,7 +49,7 @@ class Search extends Component {
             onClick={event => this.searchForInput(event)} 
             to="/gallery"
           >
-            <img src={search} className='search-image'/>
+            <img src={search} className='search-image' alt='search-button'/>
           </Link>
         }
       </form>

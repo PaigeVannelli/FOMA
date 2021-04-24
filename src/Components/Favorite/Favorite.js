@@ -3,7 +3,7 @@ import './Favorite.css'
 const Favorite = ({ key, title, image }) => {
   return (
     <article key={key} className='favorite-art'>
-      <img src={image} className='favorite-image'/>
+      <img src={image} className='favorite-image' alt={title}/>
       <p>{title}</p>
     </article>
   )
