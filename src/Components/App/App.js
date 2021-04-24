@@ -136,7 +136,7 @@ class App extends Component {
             exact path={'/favorites'}
             render={() => {
               return (
-                <AllFavorites favoritedArt={this.state.favoritedArt}/>
+                <AllFavorites favoritedArt={this.state.favoritedArt} resetSearch={this.resetSearch}/>
               )
             }}
             />
