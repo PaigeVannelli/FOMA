@@ -1,10 +1,11 @@
 import './ArtDetails.css'
-import { Link } from 'react-router-dom'
-import home from '../../assets/home.svg'
-import favorites from '../../assets/heart.svg'
+// import { Link } from 'react-router-dom'
+// import home from '../../assets/home.svg'
+// import favorites from '../../assets/heart.svg'
 import bookmark from '../../assets/bookmark.svg'
 import activeBookmark from '../../assets/bookmark-outline.svg'
 import Nav from '../nav/Nav'
+import PropTypes from 'prop-types'
 
 const ArtDetails = (props) => {
   
@@ -17,25 +18,29 @@ const ArtDetails = (props) => {
       key: props.currentArt.id,
     }
     props.addFavorite(favoritePost)
-    //change logo src
   }
   
   return (
     <article className='art-details'>
       <div className='art-display-nav'>
         <button className='favorite-button' onClick={submitFavorite}>
-            <img src={bookmark} className='button bookmark'/>
-            {/* <img src={this.props.isfavorited ? bookmark : activeBookmark} className='button bookmark'/> */}
-            {/* <img src={bookmark} className={`button ${this.props.isFavorited ? 'bookmark-active' : 'bookmark'}`}/> */}
+          {props.isFavorited && <img src={activeBookmark} className='button' alt='active-bookmark'/> }
+          {!props.isFavorited && <img src={bookmark} className='button'alt='bookmark'/> }
         </button>
         <Nav submitFavorite={props.submitFavorite} />
       </div>
-      <h1 className='title details'>Title: {props.currentArt.title}</h1>
-      <p className='details'>Medium: {props.currentArt.medium}</p>
-      <p className='details'>Artist: {props.currentArt.artist}</p>
-      <p className='details'>Date: {props.currentArt.date}</p>
+      <h1 className='title details'>Title: {props.currentArt.title ? props.currentArt.title : 'unknown'}</h1>
+      <p className='details'>Medium: {props.currentArt.medium ? props.currentArt.medium : 'unknown'}</p>
+      <p className='details'>Artist: {props.currentArt.artist ? props.currentArt.artist : 'unknown'}</p>
+      <p className='details'>Date: {props.currentArt.date ? props.currentArt.date : 'unknown'}</p>
     </article>
   )
+}
+
+ArtDetails.propTypes = {
+  currentArt: PropTypes.object,
+  addFavorite: PropTypes.func, 
+  isFavorited: PropTypes.bool
 }
 
 export default ArtDetails

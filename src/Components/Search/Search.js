@@ -2,6 +2,7 @@ import './Search.css'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import search from '../../assets/search.svg'
+import PropTypes from 'prop-types'
 
 class Search extends Component {
   constructor(props) {
@@ -41,18 +42,24 @@ class Search extends Component {
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
         />
-        <Link 
-          data-cy='search-button' 
-          className='submit-button' 
-          onClick={event => this.searchForInput(event)} 
-          to="/gallery"
-        >
-          <img src={search} className='search-image'/>
-        </Link>
-        {/* <Link to="/gallery" onClick={event => this.searchForInput(event)}>Search</Link> */}
+        {
+          this.state.searchTerm &&
+          <Link 
+            data-cy='search-button' 
+            className='submit-button' 
+            onClick={event => this.searchForInput(event)} 
+            to="/gallery"
+          >
+            <img src={search} className='search-image' alt='search-button'/>
+          </Link>
+        }
       </form>
     )
   }
+}
+
+Search.propTypes = {
+  search: PropTypes.func
 }
 
 export default Search

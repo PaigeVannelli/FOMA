@@ -1,5 +1,6 @@
 import './LandingPage.css'
 import Search from '../search/Search'
+import PropTypes from 'prop-types'
 
 const LandingPage = ({ search }) => {
   return (
@@ -11,7 +12,10 @@ const LandingPage = ({ search }) => {
       <Search search={search}/>
     </section>
   )
-  //Need to return the right background on this component!
+}
+
+LandingPage.propTypes = {
+  search: PropTypes.func
 }
 
 export default LandingPage
