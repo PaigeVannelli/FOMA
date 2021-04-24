@@ -25,9 +25,25 @@ const ArtDetails = (props) => {
   return (
     <article className='art-details'>
       <div className='art-display-nav'>
-        <button className='favorite-button' onClick={submitFavorite}>
-          {props.currentArt.isFavorited && <img src={activeBookmark} className='button' alt='active-bookmark'/> }
-          {!props.currentArt.isFavorited && <img src={bookmark} className='button'alt='bookmark'/> }
+        <button 
+          data-cy='favorite-button' 
+          className='favorite-button' 
+          onClick={submitFavorite}
+        >
+          {props.currentArt.isFavorited && 
+            <img 
+              data-cy='favorite-button-image'
+              src={activeBookmark} 
+              className='button' 
+              alt='active-bookmark'
+            /> }
+          {!props.currentArt.isFavorited && 
+            <img 
+              data-cy='favorite-button-image'
+              src={bookmark} 
+              className='button'
+              alt='bookmark'
+            /> }
         </button>
         <Nav resetSearch={props.resetSearch} />
       </div>

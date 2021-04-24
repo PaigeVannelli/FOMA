@@ -74,7 +74,11 @@ const ArtPage = (props) => {
           />
         </div>
         <div className={`display-next-button-container ${props.currentArt.lastPiece ? 'hidden' : ''}`}>
-          <button className='display-next-button' onClick={props.displayNextPiece}>></button>
+          <button 
+            data-cy='advance-button' 
+            className='display-next-button' 
+            onClick={props.displayNextPiece}
+          > > </button>
         </div>
       </>
       :
