@@ -12,13 +12,13 @@ class App extends Component {
     super();
     this.state = {
       searchedArtIDs: [],
-      currentArtID: 0,
-      loading: true,
-      //If I'm going based off index should I get rid of artId?
-      currentArtIndex: 0,
-      currentArt: {},
       favoritedArt: [],
-      isFavorited: false,
+      currentArtIndex: 0,
+      currentArt: {
+        isFavorited: false,
+        lastPiece: false,
+      },
+      loading: true,
       error: ''
     }
   }
@@ -32,13 +32,49 @@ class App extends Component {
     cleanedArtObject.date = artObject.objectDate
     cleanedArtObject.image = artObject.primaryImage
     cleanedArtObject.smallImage = artObject.primarySmallImage
+    cleanedArtObject.isFavorited = false
     return cleanedArtObject
+  }
+
+  checkLastPiece = () => {
+    if ((this.state.currentArtIndex + 1) === this.state.searchedArtIDs.length) {
+      this.setState(prevState => ({
+        currentArt: {                 
+            ...prevState.currentArt,    
+            lastPiece: true      
+        }
+      }))
+    } else {
+      this.setState(prevState => ({
+        currentArt: {                 
+            ...prevState.currentArt,    
+            lastPiece: false     
+        }
+      }))
+    }
+  }
+
+  checkIfFavorited = (artPiece) => {
+    this.state.favoritedArt.forEach(piece => {
+      if (piece.title === artPiece.title) {
+        this.setState(prevState => ({
+          currentArt: {                 
+              ...prevState.currentArt,    
+              isFavorited: true      
+          }
+        }))
+      }
+    })
   }
 
   fetchPieceDetails = (currentID) => {
     fetchArtInfo('objects/', currentID)
-      .then(artObject => this.simplifyArtObject(artObject))
-      .then(data => this.setState({ currentArt: data, loading: false, isFavorited: false }))
+      .then(data => {
+        const artObject = this.simplifyArtObject(data)
+        this.setState({ currentArt: artObject, loading: false })
+        this.checkIfFavorited(data)
+        this.checkLastPiece()
+      })
       .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
   }
 
@@ -46,7 +82,6 @@ class App extends Component {
     this.setState({loading: true})
     fetchArtInfo('search?q=', searchTerm.searchTerm)
       .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
-      .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
       .catch(() => this.setState({ error: 'Please try again later' }))
       .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     }
@@ -68,25 +103,41 @@ class App extends Component {
       searchedArtArray[i] = searchedArtArray[j];
       searchedArtArray[j] = temp;
     }
-    this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
+    this.setState({ searchedArtIDs: searchedArtArray })
   }
   
   displayNextPiece = () => {
-    if (this.state.currentArtIndex < this.state.searchedArtIDs.length) {
+    if (this.state.currentArtIndex + 1 < this.state.searchedArtIDs.length) {
       this.setState({loading: true})
       let index = this.state.currentArtIndex + 1
-      this.setState({ currentArtIndex: index}, () => console.log('nice'))
-      this.setState({ currentArtID: this.state.searchedArtIDs[index] }, () => console.log('it worked'))
+      this.setState({ currentArtIndex: index}, () => console.log(''))
       this.fetchPieceDetails(this.state.searchedArtIDs[index])
-    }
+    } 
   }
 
   addFavorite = (favorite) => {
     if (!this.state.favoritedArt.includes(favorite)) {
       let tempFavoritedArt = this.state.favoritedArt
       tempFavoritedArt.push(favorite)
-      this.setState({ favoritedArt: tempFavoritedArt, isFavorited: true })
+      this.setState({ favoritedArt: tempFavoritedArt })
+      this.setState(prevState => ({
+        currentArt: {                  
+            ...prevState.currentArt,    
+            isFavorited: true       
+        }
+      }))
     }
+  }
+
+
+  resetSearch = () => {
+    this.setState(prevState => ({
+      currentArtIndex: 0,
+      currentArt: {                 
+          ...prevState.currentArt,    
+          lastPiece: false   
+      }
+    }))
   }
 
   render = () => {
@@ -107,11 +158,10 @@ class App extends Component {
                 <ArtPage 
                   loading={this.state.loading}
                   validSearch={this.state.searchedArtIDs.length > 0}
-                  currentArtID={this.state.currentArtID} 
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
-                  isFavorited={this.state.isFavorited}
+                  resetSearch={this.resetSearch}
                 />
               )
             }}
@@ -120,7 +170,7 @@ class App extends Component {
             exact path={'/favorites'}
             render={() => {
               return (
-                <AllFavorites favoritedArt={this.state.favoritedArt}/>
+                <AllFavorites favoritedArt={this.state.favoritedArt} resetSearch={this.resetSearch}/>
               )
             }}
             />

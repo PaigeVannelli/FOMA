@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 
 const ArtPage = (props) => {
 
-  
   // const errorHandling = () => {
   //   if (props.currentArtID & props.validSearch) {
   //     return (
@@ -36,10 +35,34 @@ const ArtPage = (props) => {
   //   }
   // }
 
+  // let displayPiece = () => {
+  //   if (!props.loading) {
+  //     return (
+  //       <>
+  //         <div className='art-piece-container'>
+  //           <img 
+  //             src={props.currentArt.image} 
+  //             alt={props.currentArt.title} 
+  //             className='art-piece'
+  //           />
+  //         </div>
+  //         <div className={`display-next-button-container ${props.lastPiece ? 'hidden' : ''}`}>
+  //           <button className='display-next-button' onClick={props.displayNextPiece}>></button>
+  //         </div>
+  //       </>
+  //     )
+  //   } else {
+  //     return (
+  //       <div className='art-piece-container'>
+  //         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  //       </div>
+  //     )
+  //   }
+  // }
+
   return (
     <section className='art-page'>
       {
-        // props.currentArtID ?
         !props.loading ?
       <>
         <div className='art-piece-container'>
@@ -49,7 +72,7 @@ const ArtPage = (props) => {
             className='art-piece'
           />
         </div>
-        <div className='display-next-button-container'>
+        <div className={`display-next-button-container ${props.currentArt.lastPiece ? 'hidden' : ''}`}>
           <button className='display-next-button' onClick={props.displayNextPiece}>></button>
         </div>
       </>
@@ -58,7 +81,11 @@ const ArtPage = (props) => {
         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>
     }
-    <ArtDetails currentArt={props.currentArt} addFavorite={props.addFavorite} isFavorited={props.isFavorited}/>
+    <ArtDetails 
+      currentArt={props.currentArt} 
+      addFavorite={props.addFavorite} 
+      resetSearch={props.resetSearch}
+    />
     </section>
   )
 }
@@ -66,11 +93,10 @@ const ArtPage = (props) => {
 ArtPage.propTypes = {
   loading: PropTypes.bool,
   validSearch: PropTypes.bool,
-  currentArtID: PropTypes.number,
   currentArt: PropTypes.object,
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
-  isFavorited: PropTypes.bool
+  resetSearch: PropTypes.func
 }
 
 export default ArtPage

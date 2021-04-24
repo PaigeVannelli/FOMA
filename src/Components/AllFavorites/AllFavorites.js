@@ -21,15 +21,14 @@ const AllFavorites = (props) => {
       <div className='all-favorite-art'>
         {allFavorites}
       </div>
-      <Nav className='nav-buttons'/>
+      <Nav className='nav-buttons' resetSearch={props.resetSearch}/>
     </section>
   )
 }
 
 AllFavorites.propTypes = {
-  favoritedArt: PropTypes.array
+  favoritedArt: PropTypes.array,
+  resetSerch: PropTypes.func
 }
 
 export default AllFavorites
-// Function component 
-// should get and map through all favorited art images and titles
