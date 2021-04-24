@@ -19,17 +19,7 @@ class App extends Component {
       },
       lastPiece: false,
       favoritedArt: [],
-      // isFavorited: false,
       error: ''
-      // searchedArtIDs: [],
-      // loading: true,
-      // lastPiece: false,
-      // //If I'm going based off index should I get rid of artId?
-      // currentArtIndex: 0,
-      // currentArt: {},
-      // favoritedArt: [],
-      // isFavorited: false,
-      // error: ''
     }
   }
   
