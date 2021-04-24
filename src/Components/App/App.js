@@ -12,13 +12,13 @@ class App extends Component {
     super();
     this.state = {
       searchedArtIDs: [],
-      loading: true,
+      favoritedArt: [],
       currentArtIndex: 0,
       currentArt: {
         isFavorited: false,
+        lastPiece: false,
       },
-      lastPiece: false,
-      favoritedArt: [],
+      loading: true,
       error: ''
     }
   }
@@ -37,10 +37,20 @@ class App extends Component {
   }
 
   checkLastPiece = () => {
-    if ((this.state.currentArtIndex + 2) === this.state.searchedArtIDs.length) {
-      this.setState({ lastPiece: true })
+    if ((this.state.currentArtIndex + 1) === this.state.searchedArtIDs.length) {
+      this.setState(prevState => ({
+        currentArt: {                 
+            ...prevState.currentArt,    
+            lastPiece: true      
+        }
+      }))
     } else {
-      this.setState({ lastPiece: false })
+      this.setState(prevState => ({
+        currentArt: {                 
+            ...prevState.currentArt,    
+            lastPiece: false     
+        }
+      }))
     }
   }
 
@@ -58,12 +68,12 @@ class App extends Component {
   }
 
   fetchPieceDetails = (currentID) => {
-    this.checkLastPiece()
     fetchArtInfo('objects/', currentID)
       .then(data => {
         const artObject = this.simplifyArtObject(data)
         this.setState({ currentArt: artObject, loading: false })
         this.checkIfFavorited(data)
+        this.checkLastPiece()
       })
       .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
   }
@@ -121,7 +131,13 @@ class App extends Component {
 
 
   resetSearch = () => {
-    this.setState({ currentArtIndex: 0, lastPiece: false })
+    this.setState(prevState => ({
+      currentArtIndex: 0,
+      currentArt: {                 
+          ...prevState.currentArt,    
+          lastPiece: false   
+      }
+    }))
   }
 
   render = () => {
@@ -145,7 +161,6 @@ class App extends Component {
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
-                  lastPiece={this.state.lastPiece}
                   resetSearch={this.resetSearch}
                 />
               )

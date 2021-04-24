@@ -72,7 +72,7 @@ const ArtPage = (props) => {
             className='art-piece'
           />
         </div>
-        <div className={`display-next-button-container ${props.lastPiece ? 'hidden' : ''}`}>
+        <div className={`display-next-button-container ${props.currentArt.lastPiece ? 'hidden' : ''}`}>
           <button className='display-next-button' onClick={props.displayNextPiece}>></button>
         </div>
       </>
@@ -84,7 +84,6 @@ const ArtPage = (props) => {
     <ArtDetails 
       currentArt={props.currentArt} 
       addFavorite={props.addFavorite} 
-      // isFavorited={props.isFavorited}
       resetSearch={props.resetSearch}
     />
     </section>
@@ -97,8 +96,6 @@ ArtPage.propTypes = {
   currentArt: PropTypes.object,
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
-  // isFavorited: PropTypes.bool, 
-  lastPiece: PropTypes.bool,
   resetSearch: PropTypes.func
 }
 
