@@ -5,11 +5,11 @@ import favorites from '../../assets/heart.svg'
 import search from '../../assets/search.svg'
 import PropTypes from 'prop-types'
 
-const Nav = () => {
+const Nav = ({ resetSearch }) => {
   return (
     <nav className='button-nav'>
       <Link to='/'>
-        <button>
+        <button onClick={resetSearch}>
           <img src={home} className='home button' alt='home-button'/>
         </button>
       </Link>
@@ -28,7 +28,7 @@ const Nav = () => {
 }
 
 Nav.propTypes = {
-  submitFavorite: PropTypes.func
+  resetSearch: PropTypes.func
 }
 
 export default Nav

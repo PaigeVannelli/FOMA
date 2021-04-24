@@ -81,7 +81,12 @@ const ArtPage = (props) => {
         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>
     }
-    <ArtDetails currentArt={props.currentArt} addFavorite={props.addFavorite} isFavorited={props.isFavorited}/>
+    <ArtDetails 
+      currentArt={props.currentArt} 
+      addFavorite={props.addFavorite} 
+      isFavorited={props.isFavorited}
+      resetSearch={props.resetSearch}
+    />
     </section>
   )
 }
@@ -94,7 +99,8 @@ ArtPage.propTypes = {
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
   isFavorited: PropTypes.bool, 
-  lastPiece: PropTypes.bool
+  lastPiece: PropTypes.bool,
+  resetSearch: PropTypes.func
 }
 
 export default ArtPage

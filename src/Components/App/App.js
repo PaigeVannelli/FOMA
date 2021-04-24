@@ -99,6 +99,10 @@ class App extends Component {
     }
   }
 
+  resetSearch = () => {
+    this.setState({ currentArtIndex: 0, lastPiece: false, currentArtID: 0 })
+  }
+
   render = () => {
     return (
       <main className='main'>
@@ -123,6 +127,7 @@ class App extends Component {
                   addFavorite={this.addFavorite}
                   isFavorited={this.state.isFavorited}
                   lastPiece={this.state.lastPiece}
+                  resetSearch={this.resetSearch}
                 />
               )
             }}

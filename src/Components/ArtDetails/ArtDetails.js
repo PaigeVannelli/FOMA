@@ -27,7 +27,7 @@ const ArtDetails = (props) => {
           {props.isFavorited && <img src={activeBookmark} className='button' alt='active-bookmark'/> }
           {!props.isFavorited && <img src={bookmark} className='button'alt='bookmark'/> }
         </button>
-        <Nav submitFavorite={props.submitFavorite} />
+        <Nav resetSearch={props.resetSearch} />
       </div>
       <h1 className='title details'>Title: {props.currentArt.title ? props.currentArt.title : 'unknown'}</h1>
       <p className='details'>Medium: {props.currentArt.medium ? props.currentArt.medium : 'unknown'}</p>
