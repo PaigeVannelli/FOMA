@@ -10,22 +10,24 @@ import PropTypes from 'prop-types'
 const ArtDetails = (props) => {
   
   const submitFavorite = () => {
-    const favoritePost = {
-      id: props.currentArt.id,
-      title: props.currentArt.title,
-      image: props.currentArt.image,
-      artist: props.currentArt.artist,
-      key: props.currentArt.id,
+    if (!props.currentArt.isFavorited) {
+      const favoritePost = {
+        id: props.currentArt.id,
+        title: props.currentArt.title,
+        image: props.currentArt.image,
+        artist: props.currentArt.artist,
+        key: props.currentArt.id,
+      }
+      props.addFavorite(favoritePost)
     }
-    props.addFavorite(favoritePost)
   }
   
   return (
     <article className='art-details'>
       <div className='art-display-nav'>
         <button className='favorite-button' onClick={submitFavorite}>
-          {props.isFavorited && <img src={activeBookmark} className='button' alt='active-bookmark'/> }
-          {!props.isFavorited && <img src={bookmark} className='button'alt='bookmark'/> }
+          {props.currentArt.isFavorited && <img src={activeBookmark} className='button' alt='active-bookmark'/> }
+          {!props.currentArt.isFavorited && <img src={bookmark} className='button'alt='bookmark'/> }
         </button>
         <Nav resetSearch={props.resetSearch} />
       </div>
@@ -40,7 +42,7 @@ const ArtDetails = (props) => {
 ArtDetails.propTypes = {
   currentArt: PropTypes.object,
   addFavorite: PropTypes.func, 
-  isFavorited: PropTypes.bool
+  // isFavorited: PropTypes.bool
 }
 
 export default ArtDetails

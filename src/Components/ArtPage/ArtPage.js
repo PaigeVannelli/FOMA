@@ -84,7 +84,7 @@ const ArtPage = (props) => {
     <ArtDetails 
       currentArt={props.currentArt} 
       addFavorite={props.addFavorite} 
-      isFavorited={props.isFavorited}
+      // isFavorited={props.isFavorited}
       resetSearch={props.resetSearch}
     />
     </section>
@@ -97,7 +97,7 @@ ArtPage.propTypes = {
   currentArt: PropTypes.object,
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
-  isFavorited: PropTypes.bool, 
+  // isFavorited: PropTypes.bool, 
   lastPiece: PropTypes.bool,
   resetSearch: PropTypes.func
 }
