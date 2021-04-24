@@ -12,15 +12,26 @@ class App extends Component {
     super();
     this.state = {
       searchedArtIDs: [],
-      currentArtID: 0,
       loading: true,
-      lastPiece: false,
+      // lastPiece: false,
       //If I'm going based off index should I get rid of artId?
       currentArtIndex: 0,
-      currentArt: {},
+      currentArt: {
+        isFavorited: false,
+        lastPiece: false
+      },
       favoritedArt: [],
-      isFavorited: false,
+      // isFavorited: false,
       error: ''
+      // searchedArtIDs: [],
+      // loading: true,
+      // lastPiece: false,
+      // //If I'm going based off index should I get rid of artId?
+      // currentArtIndex: 0,
+      // currentArt: {},
+      // favoritedArt: [],
+      // isFavorited: false,
+      // error: ''
     }
   }
   
@@ -33,6 +44,7 @@ class App extends Component {
     cleanedArtObject.date = artObject.objectDate
     cleanedArtObject.image = artObject.primaryImage
     cleanedArtObject.smallImage = artObject.primarySmallImage
+    cleanedArtObject.isFavorited = false 
     return cleanedArtObject
   }
 
@@ -56,7 +68,6 @@ class App extends Component {
     this.setState({loading: true})
     fetchArtInfo('search?q=', searchTerm.searchTerm)
       .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
-      .then(() => this.setState({ currentArtID: this.state.searchedArtIDs[0] }))
       .catch(() => this.setState({ error: 'Please try again later' }))
       .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     }
@@ -78,15 +89,14 @@ class App extends Component {
       searchedArtArray[i] = searchedArtArray[j];
       searchedArtArray[j] = temp;
     }
-    this.setState({ searchedArtIDs: searchedArtArray, currentArtID: this.state.searchedArtIDs[0] })
+    this.setState({ searchedArtIDs: searchedArtArray })
   }
   
   displayNextPiece = () => {
     if (this.state.currentArtIndex + 1 < this.state.searchedArtIDs.length) {
       this.setState({loading: true})
       let index = this.state.currentArtIndex + 1
-      this.setState({ currentArtIndex: index}, () => console.log('nice'))
-      this.setState({ currentArtID: this.state.searchedArtIDs[index] }, () => console.log('it worked'))
+      this.setState({ currentArtIndex: index}, () => console.log(''))
       this.fetchPieceDetails(this.state.searchedArtIDs[index])
     } 
   }
@@ -100,7 +110,7 @@ class App extends Component {
   }
 
   resetSearch = () => {
-    this.setState({ currentArtIndex: 0, lastPiece: false, currentArtID: 0 })
+    this.setState({ currentArtIndex: 0, lastPiece: false })
   }
 
   render = () => {
@@ -121,7 +131,6 @@ class App extends Component {
                 <ArtPage 
                   loading={this.state.loading}
                   validSearch={this.state.searchedArtIDs.length > 0}
-                  currentArtID={this.state.currentArtID} 
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}

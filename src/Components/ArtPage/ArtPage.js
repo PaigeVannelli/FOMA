@@ -94,7 +94,6 @@ const ArtPage = (props) => {
 ArtPage.propTypes = {
   loading: PropTypes.bool,
   validSearch: PropTypes.bool,
-  currentArtID: PropTypes.number,
   currentArt: PropTypes.object,
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
