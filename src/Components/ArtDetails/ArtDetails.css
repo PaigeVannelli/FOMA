@@ -1,6 +1,7 @@
 .art-details {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 20%;
   min-width: 25em;
 }
@@ -23,14 +24,15 @@
   background-color: rgb(204, 201, 196);
   display: flex;
   flex-direction: column;
-  margin-top: 15%;
+  align-self: center;
   box-shadow: -2px 4px 5px black;
   border-radius: 5px;
+  background-image: url('https://media.istockphoto.com/photos/silver-metal-texture-background-picture-id1007075100?k=6&m=1007075100&s=612x612&w=0&h=dwOQtXCswDwsCIUZN86RPkV6HZEtxpMjq1Qwo_ADvyI=');
 }
 
 .favorite-button{
   width: 5em;
-  background-color: rgb(204, 201, 196);
+  background-color: transparent;
   border: none;
   outline: none !important;
   align-self: flex-end;  

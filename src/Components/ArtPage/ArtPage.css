@@ -36,12 +36,14 @@
   padding: none;
 }
 
-.art-details {
+/* .art-details {
   display: flex;
   height: 100%;
   float: right;
   right: 0;
-}
+  display: flex;
+  flex-direction: column;
+} */
 
 .lds-ellipsis {
   display: inline-block;
