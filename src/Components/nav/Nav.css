@@ -1,4 +1,11 @@
 .button-nav {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  right: 0px;
+  width: 12em;
+}
+
+.home-button {
+  background-color: transparent;
 }

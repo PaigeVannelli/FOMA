@@ -45,7 +45,7 @@ const ArtDetails = (props) => {
               alt='bookmark'
             /> }
         </button> */}
-        <Nav resetSearch={props.resetSearch} />
+        {/* <Nav resetSearch={props.resetSearch} /> */}
       </div>
       <div className='art-plaque'>
         <button 

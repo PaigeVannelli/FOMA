@@ -5,6 +5,7 @@ import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
 import AllFavorites from '../allFavorites/AllFavorites'
 import fetchArtInfo from '../../ApiCalls'
+import Nav from '../nav/Nav'
 
 //Change app to name! 
 class App extends Component {
@@ -162,9 +163,8 @@ class App extends Component {
     return (
       <main className='main'>
         <BrowserRouter>
-        {/* {this.checkForErrors()} */}
+        <Nav resetSearch={this.resetSearch}/>
           <Switch>
-            {/* {this.state.searchedArtIDs.length > 0 && <Redirect to={`/${this.state.currentArtId}`} />} */}
             <Route 
             exact path='/'
             render={() => {
