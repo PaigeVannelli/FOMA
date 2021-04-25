@@ -6,9 +6,9 @@
   justify-content: center;
   background-image: url('https://image.freepik.com/free-photo/white-room-museum-with-bench_110488-1697.jpg');
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  background-size: 100% 100%;
 }
+
 
 .main-title {
   font-family: 'Roboto', sans-serif;
