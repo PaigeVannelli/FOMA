@@ -18,13 +18,14 @@
 }
 
 .art-plaque {
-  /* min-width: 200px; */
   height: 340px;
   width: 90%;
   background-color: rgb(204, 201, 196);
   display: flex;
   flex-direction: column;
   margin-top: 15%;
+  box-shadow: -2px 4px 5px black;
+  border-radius: 5px;
 }
 
 .favorite-button{
@@ -32,11 +33,12 @@
   background-color: rgb(204, 201, 196);
   border: none;
   outline: none !important;
-  align-self: flex-end;
+  align-self: flex-end;  
+  border-radius: 5px;
 }
 
 .details {
-  margin-left: 35px
+  margin: 8px 35px 8px 35px
 }
 
 .title {
