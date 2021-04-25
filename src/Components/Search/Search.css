@@ -10,6 +10,7 @@
   border: 0;
   outline: none;
   outline: none;
+  background-color: rgba(white, white, white, 5);
   /* text-decoration: underline; */
   border-bottom: 2px solid black;
   width: 270px;

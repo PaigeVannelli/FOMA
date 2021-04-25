@@ -10,7 +10,7 @@ class Search extends Component {
     this.state = {
       searchTerm: '',
     }
-  }
+  } 
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value})
