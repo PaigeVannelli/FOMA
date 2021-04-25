@@ -18,6 +18,7 @@ const AllFavorites = (props) => {
 
   return (
     <section className='all-favorites-page'>
+      <h1 className='favorites-title'>Favorites</h1>
       <div data-cy='favorites-section' className='all-favorite-art'>
         {allFavorites}
       </div>

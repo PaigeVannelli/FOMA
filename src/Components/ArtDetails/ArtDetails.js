@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 const ArtDetails = (props) => {
   
   const submitFavorite = () => {
+    // if (!props.currentArt.isFavorited) {
     if (!props.currentArt.isFavorited) {
       const favoritePost = {
         id: props.currentArt.id,
