@@ -22,7 +22,6 @@ const AllFavorites = (props) => {
       <div data-cy='favorites-section' className='all-favorite-art'>
         {allFavorites}
       </div>
-      <Nav className='nav-buttons' resetSearch={props.resetSearch}/>
     </section>
   )
 }

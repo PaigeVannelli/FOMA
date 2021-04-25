@@ -36,14 +36,9 @@
   padding: none;
 }
 
-/* .art-details {
-  display: flex;
-  height: 100%;
-  float: right;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-} */
+.next-arrow {
+  height: 1em;
+}
 
 .lds-ellipsis {
   display: inline-block;

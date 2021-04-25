@@ -6,6 +6,7 @@ import ArtPage from '../artPage/ArtPage'
 import AllFavorites from '../allFavorites/AllFavorites'
 import fetchArtInfo from '../../ApiCalls'
 import Nav from '../nav/Nav'
+import logo from '../../assets/logo.png';
 
 //Change app to name! 
 class App extends Component {

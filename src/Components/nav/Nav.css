@@ -1,7 +1,20 @@
+.header {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 100%
+}
+
+.logo {
+  height: 8em;
+}
+
 .button-nav {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  float: right;
+  /* right: 0px; */
+  position: fixed;
   right: 0px;
   width: 12em;
   margin: 15px 25px 0 0 
@@ -19,12 +32,9 @@
   margin: 10px;
 }
 
-.home-button {
-  background-color: blue;
-}
-
 .home-highlighted, .search-highlighted, .favorites-highlighted {
-  border-bottom: solid 2px rgb(51, 51, 51);
+  /* border-bottom: solid 2px rgb(51, 51, 51); */
+  border-bottom: solid 2px #188FA7;
   /* box-shadow: 0 2px 0px grey; */
 }
 
