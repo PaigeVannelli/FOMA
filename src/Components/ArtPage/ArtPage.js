@@ -69,11 +69,10 @@ const ArtPage = (props) => {
         </div>
       )
     }
-}
+  }
 
   return (
     <section className='art-page'>
-      {/* {checkForErrors()} */}
       {
         !props.loading ?
       <>
