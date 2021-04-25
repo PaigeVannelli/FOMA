@@ -39,7 +39,7 @@ const Nav = ({ resetSearch }) => {
         <img 
           src={home} 
           // className='home button' 
-          className={`button ${useLocation().pathname === '/' && 'home-highlighted '}`}
+          className={`button ${useLocation().pathname === '/' && 'home-highlighted'}`}
           alt='home-button'
         />
       </Link>
@@ -47,7 +47,7 @@ const Nav = ({ resetSearch }) => {
         <img 
           data-cy='search-button' 
           src={search} 
-          className={`button ${useLocation().pathname === '/gallery' && 'search-highlighted '}`}
+          className={`button ${useLocation().pathname === '/gallery' && 'search-highlighted'}`}
           alt='search-button'
         />
       </Link>
@@ -55,7 +55,7 @@ const Nav = ({ resetSearch }) => {
         <img 
           data-cy='view-favorites' 
           src={favorites} 
-          className={`button ${useLocation().pathname === '/favorites' && 'favorites-highlighted '}`}
+          className={`button ${useLocation().pathname === '/favorites' && 'favorites-highlighted'}`}
           alt='favorites-button'
         />
       </Link>

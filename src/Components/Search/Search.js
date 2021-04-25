@@ -36,23 +36,22 @@ class Search extends Component {
         <input
         data-cy='search-input'
         className='search-input'
-        placeholder='Search here (ie. "monet" or "sunflowers")'
+        placeholder='search term here'
         type='text'
         name='searchTerm'
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
         />
-        {
-          this.state.searchTerm &&
-          <Link 
-            data-cy='search-button' 
-            className='submit-button' 
-            onClick={event => this.searchForInput(event)} 
-            to="/gallery"
-          >
-            <img src={search} className='search-image' alt='search-button'/>
-          </Link>
-        }
+        <Link 
+          data-cy='search-button' 
+          className='submit-button' 
+          // onClick={event => this.searchForInput(event)} 
+          to="/gallery"
+          onClick={this.state.searchTerm ? (event => this.searchForInput(event)) : ((event) => event.preventDefault()) }
+        >
+          {/* <img src={search} className='search-image' alt='search-button'/> */}
+          <p className={`submit-button ${this.state.searchTerm && 'submit-button-active'}`}>ENTER</p>
+        </Link>
       </form>
     )
   }
