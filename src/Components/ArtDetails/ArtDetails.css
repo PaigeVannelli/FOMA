@@ -1,8 +1,8 @@
 .art-details {
   display: flex;
   flex-direction: column;
-  width: 25%;
-  min-width: 30em;
+  width: 20%;
+  min-width: 25em;
 }
 
 .art-display-nav {
@@ -17,19 +17,22 @@
   outline: none !important;
 }
 
-.favorite-button{
-  /* background-color: rgb(204, 201, 196); */
-  border: none;
-  outline: none !important
-}
-
 .art-plaque {
-  height: 350px;
-  width: 450px;
+  /* min-width: 200px; */
+  height: 340px;
+  width: 90%;
   background-color: rgb(204, 201, 196);
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
+  margin-top: 15%;
+}
+
+.favorite-button{
+  width: 5em;
+  background-color: rgb(204, 201, 196);
+  border: none;
+  outline: none !important;
+  align-self: flex-end;
 }
 
 .details {
@@ -37,6 +40,6 @@
 }
 
 .title {
-  margin-top: 20%;
+  margin-top: 5%;
 }
 
