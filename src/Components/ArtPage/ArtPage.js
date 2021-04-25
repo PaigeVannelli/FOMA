@@ -59,6 +59,17 @@ const ArtPage = (props) => {
   //     )
   //   }
   // }
+  const checkForErrors = () => {
+    if (props.error) {
+      return <h1 data-cy='error-message'>{props.error}</h1>
+    } else {
+      return (
+        <div className='art-piece-container'>
+          <div data-cy='loading' className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+      )
+    }
+  }
 
   return (
     <section className='art-page'>
@@ -67,19 +78,22 @@ const ArtPage = (props) => {
       <>
         <div className='art-piece-container'>
           <img 
+            data-cy='art-image'
             src={props.currentArt.image} 
             alt={props.currentArt.title} 
             className='art-piece'
           />
         </div>
         <div className={`display-next-button-container ${props.currentArt.lastPiece ? 'hidden' : ''}`}>
-          <button className='display-next-button' onClick={props.displayNextPiece}>></button>
+          <button 
+            data-cy='advance-button' 
+            className='display-next-button' 
+            onClick={props.displayNextPiece}
+          > > </button>
         </div>
       </>
       :
-      <div className='art-piece-container'>
-        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-      </div>
+      checkForErrors()
     }
     <ArtDetails 
       currentArt={props.currentArt} 
@@ -96,7 +110,8 @@ ArtPage.propTypes = {
   currentArt: PropTypes.object,
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
-  resetSearch: PropTypes.func
+  resetSearch: PropTypes.func,
+  error: PropTypes.string
 }
 
 export default ArtPage

@@ -18,7 +18,7 @@ const AllFavorites = (props) => {
 
   return (
     <section className='all-favorites-page'>
-      <div className='all-favorite-art'>
+      <div data-cy='favorites-section' className='all-favorite-art'>
         {allFavorites}
       </div>
       <Nav className='nav-buttons' resetSearch={props.resetSearch}/>

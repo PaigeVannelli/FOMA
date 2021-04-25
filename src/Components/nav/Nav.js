@@ -9,18 +9,28 @@ const Nav = ({ resetSearch }) => {
   return (
     <nav className='button-nav'>
       <Link to='/'>
-        <button onClick={resetSearch}>
+        <button data-cy='home-button' onClick={resetSearch}>
           <img src={home} className='home button' alt='home-button'/>
         </button>
       </Link>
       {
         useLocation().pathname === '/favorites' ?
         <Link to='/gallery'>
-          <img src={search} className='favorites button' alt='search-button'/>
+          <img 
+            data-cy='search-button' 
+            src={search} 
+            className='button' 
+            alt='search-button'
+          />
         </Link>
         :
         <Link to='/favorites'>
-          <img src={favorites} className='favorites button' alt='favorites-button'/>
+          <img 
+            data-cy='view-favorites' 
+            src={favorites} 
+            className='favorites button' 
+            alt='favorites-button'
+          />
         </Link>
       }
     </nav>
