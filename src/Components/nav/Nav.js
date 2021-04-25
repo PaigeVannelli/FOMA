@@ -35,26 +35,27 @@ const Nav = ({ resetSearch }) => {
     //   }
     // </nav>
     <nav className='button-nav'>
-      <Link to='/' onClick={resetSearch}>
+      <Link className='link' to='/' onClick={resetSearch}>
         <img 
           src={home} 
-          className='home button' 
+          // className='home button' 
+          className={`button ${useLocation().pathname === '/' && 'home-highlighted '}`}
           alt='home-button'
         />
       </Link>
-      <Link to='/gallery'>
+      <Link className='link' to='/gallery'>
         <img 
           data-cy='search-button' 
           src={search} 
-          className='button' 
+          className={`button ${useLocation().pathname === '/gallery' && 'search-highlighted '}`}
           alt='search-button'
         />
       </Link>
-      <Link to='/favorites'>
+      <Link className='link' to='/favorites'>
         <img 
           data-cy='view-favorites' 
           src={favorites} 
-          className='favorites button' 
+          className={`button ${useLocation().pathname === '/favorites' && 'favorites-highlighted '}`}
           alt='favorites-button'
         />
       </Link>
