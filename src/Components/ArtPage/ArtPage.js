@@ -59,9 +59,21 @@ const ArtPage = (props) => {
   //     )
   //   }
   // }
+  const checkForErrors = () => {
+    if (props.error) {
+      return <h1>{props.error}</h1>
+    } else {
+      return (
+        <div className='art-piece-container'>
+          <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+      )
+    }
+}
 
   return (
     <section className='art-page'>
+      {/* {checkForErrors()} */}
       {
         !props.loading ?
       <>
@@ -82,9 +94,7 @@ const ArtPage = (props) => {
         </div>
       </>
       :
-      <div className='art-piece-container'>
-        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-      </div>
+      checkForErrors()
     }
     <ArtDetails 
       currentArt={props.currentArt} 
@@ -101,7 +111,8 @@ ArtPage.propTypes = {
   currentArt: PropTypes.object,
   displayNextPiece: PropTypes.func, 
   addFavorite: PropTypes.func,
-  resetSearch: PropTypes.func
+  resetSearch: PropTypes.func,
+  error: PropTypes.string
 }
 
 export default ArtPage

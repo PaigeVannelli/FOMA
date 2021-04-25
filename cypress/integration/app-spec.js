@@ -142,7 +142,7 @@ describe('Favoriting View and Functionality', () => {
     .contains('Edouard Manet')
   });
 
-  it.only('Should allow the user to return home', () => {
+  it('Should allow the user to return home', () => {
     cy.get('[data-cy=view-favorites]')
     .click()
     .get('[data-cy=home-button]')
@@ -152,5 +152,32 @@ describe('Favoriting View and Functionality', () => {
     .get('h2')
     .contains('Museum of Modern Art')
   });  
+})
+
+describe('Error Handling', () => {
+  it.only('Should return an error if the server cannot get the movie data', () => {
+    cy.intercept('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {
+      method: 'GET',
+      url: 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet',
+      status: 500,
+      response: {
+          message: 'Something went wrong, please try again later',
+      }
+    })
+    .intercept('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {
+      method: 'GET',
+      url: 'https://collectionapi.metmuseum.org/public/collection/v1/objects/436965',
+      status: 500,
+      response: {
+          message: 'Something went wrong, please try again later',
+          
+      }
+    })
+    .visit('http://localhost:3000/')
+    .get('[data-cy=search-input]')
+    .type('monet')
+    .get('[data-cy=search-button]')
+    .click()
+  })
 })
 

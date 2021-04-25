@@ -81,9 +81,13 @@ class App extends Component {
   search = (searchTerm) => {
     this.setState({loading: true})
     fetchArtInfo('search?q=', searchTerm.searchTerm)
-    .then(allArt => this.setState({ searchedArtIDs: allArt.objectIDs }))
+    .then(allArt => {
+      this.setState({ searchedArtIDs: allArt?.objectIDs })
+      this.fetchPieceDetails(this.state.searchedArtIDs[0])
+    })
+    // .then(allArt => this.setState({ searchedArtIDs: allArt?.objectIDs }))
+    // .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     .catch(() => this.setState({ error: 'Please try again later' }))
-      .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     }
 
   //Randomize function removed for testing 
@@ -138,7 +142,6 @@ class App extends Component {
     }
   }
 
-
   resetSearch = () => {
     this.setState(prevState => ({
       currentArtIndex: 0,
@@ -149,10 +152,17 @@ class App extends Component {
     }))
   }
 
+  checkForErrors = () => {
+    if (this.state.error) {
+      return <h1 className='error'>{this.state.error}</h1>
+    }
+  }
+
   render = () => {
     return (
       <main className='main'>
         <BrowserRouter>
+        {/* {this.checkForErrors()} */}
           <Switch>
             {/* {this.state.searchedArtIDs.length > 0 && <Redirect to={`/${this.state.currentArtId}`} />} */}
             <Route 
@@ -166,11 +176,12 @@ class App extends Component {
               return (
                 <ArtPage 
                   loading={this.state.loading}
-                  validSearch={this.state.searchedArtIDs.length > 0}
+                  validSearch={this.state.searchedArtIDs?.length > 0}
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
                   resetSearch={this.resetSearch}
+                  error={this.state.error}
                 />
               )
             }}
