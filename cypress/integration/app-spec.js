@@ -154,22 +154,23 @@ describe('Favoriting View and Functionality', () => {
   });  
 })
 
+describe('Loading Screen', () => {
+  it('Should display a loading screen when art is being fetched', () => {
+    cy.visit('http://localhost:3000/gallery')
+    .get('[data-cy=loading]')
+    .should('exist');
+  })
+})
+
 describe('Error Handling', () => {
-  it.only('Should return an error if the server cannot get the movie data', () => {
-    cy.intercept('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {
-      method: 'GET',
-      url: 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet',
-      status: 500,
-      response: {
-          message: 'Something went wrong, please try again later',
-      }
-    })
+  beforeEach(() => {
+    cy.intercept('https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {fixture: 'artIDs'})
     .intercept('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {
       method: 'GET',
       url: 'https://collectionapi.metmuseum.org/public/collection/v1/objects/436965',
       status: 500,
       response: {
-          message: 'Something went wrong, please try again later',
+          message: 'Please try again later',
           
       }
     })
@@ -179,5 +180,19 @@ describe('Error Handling', () => {
     .get('[data-cy=search-button]')
     .click()
   })
+
+  it('Should allow the user to return to searched art', () => {
+    cy.get('[data-cy=error-message]')
+    .contains('Please try again later')
+  });
+
+  it('Should reroute to home when url does not match a route', () => {
+    cy.visit('http://localhost:3000/test')
+    .get('h1')
+    .contains('FOMO')
+    .get('h2')
+    .contains('Museum of Modern Art')
+  })
 })
+
 

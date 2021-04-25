@@ -61,11 +61,11 @@ const ArtPage = (props) => {
   // }
   const checkForErrors = () => {
     if (props.error) {
-      return <h1>{props.error}</h1>
+      return <h1 data-cy='error-message'>{props.error}</h1>
     } else {
       return (
         <div className='art-piece-container'>
-          <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+          <div data-cy='loading' className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </div>
       )
     }
