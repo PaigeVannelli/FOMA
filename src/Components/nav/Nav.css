@@ -6,6 +6,17 @@
   width: 12em;
 }
 
+.button {
+  height: 2em;
+  margin: 15px;
+  outline: none !important;
+}
+
 .home-button {
-  background-color: transparent;
+  background-color: blue;
+}
+
+.home {
+  /* background-color: blue; */
+  border-bottom: solid 2px black;
 }
