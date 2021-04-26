@@ -18,6 +18,7 @@ class App extends Component {
         isFavorited: false,
         lastPiece: false,
       },
+      searchTerm: '',
       loading: true,
       error: ''
     }
@@ -57,9 +58,9 @@ class App extends Component {
       .catch(() => this.setState({ error: "Something went wrong, please try again later", loading: false, currentArt: {} }))
   }
 
-  search = (searchTerm) => {
+  search = () => {
     this.setState({loading: true, error: '' })
-    fetchArtInfo('search?q=', searchTerm.searchTerm)
+    fetchArtInfo('search?q=', this.state.searchTerm)
     .then(allArt => {
       this.setState({ searchedArtIDs: allArt?.objectIDs })
       if (allArt.objectIDs) {
@@ -70,27 +71,8 @@ class App extends Component {
     })
     .catch(() => {
         this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
-      })
-    }
-
-  //Randomize function removed for testing 
-  // search = (searchTerm) => {
-  //   this.setState({loading: true})
-  //   fetchArtInfo('search?q=', searchTerm.searchTerm)
-  //     .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
-  //     .catch(() => this.setState({ error: 'Please try again later' }))
-  //     .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
-  //   }
-  
-  // randomizeArtIDs = (searchedArtArray) => {
-  //   for (var i = searchedArtArray.length - 1; i > 0; i--) {
-  //     var j = Math.floor(Math.random() * (i + 1));
-  //     var temp = searchedArtArray[i];
-  //     searchedArtArray[i] = searchedArtArray[j];
-  //     searchedArtArray[j] = temp;
-  //   }
-  //   this.setState({ searchedArtIDs: searchedArtArray })
-  // }
+    })
+  }
   
   displayNextPiece = () => {
     if (this.state.currentArtIndex + 1 < this.state.searchedArtIDs.length) {
@@ -125,16 +107,20 @@ class App extends Component {
     }))
   }
 
+  setSearchTerm = (searchTerm) => {
+    this.setState({ searchTerm: searchTerm})
+  }
+
   render() {
     return (
       <main className='main'>
         <BrowserRouter>
-        <Nav resetSearch={this.resetSearch}/>
+        <Nav resetSearch={this.resetSearch} search={this.search}/>
           <Switch>
             <Route 
             exact path='/'
             render={() => {
-              return <LandingPage search={this.search}/>
+              return <LandingPage search={this.search} setSearchTerm={this.setSearchTerm}/>
             }}
             />
             <Route 

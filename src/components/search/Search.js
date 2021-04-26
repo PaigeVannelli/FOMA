@@ -13,23 +13,11 @@ class Search extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value})
-  }
-
-  searchForInput = () => {
-    const searchTerm = {
-      id: Date.now(),
-      ...this.state,
-    }
-    this.props.search(searchTerm)
-    this.clearInputs()
-  }
-
-  clearInputs = () => {
-    this.setState({ searchTerm: '' })
+    this.props.setSearchTerm(event.target.value)
   }
 
   validateSearch = () => {
-    return this.state.searchTerm ? (() => this.searchForInput()) : ((event) => event.preventDefault()) 
+    return this.state.searchTerm ? (() => this.props.search()) : ((event) => event.preventDefault()) 
   }
 
   render() {
@@ -45,7 +33,7 @@ class Search extends Component {
         onChange={event => this.handleChange(event)}
         />
         <Link 
-          data-cy='search-button' 
+          data-cy='enter-search-button' 
           className='submit-button' 
           to="/gallery"
         >

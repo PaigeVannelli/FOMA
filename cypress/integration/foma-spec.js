@@ -2,9 +2,9 @@ describe('Landing Page View', () => {
   it('Should display a landing page when website is opened', () => {
     cy.visit('http://localhost:3000/')
     .get('h1')
-    .contains('FOMO')
+    .contains('FOMA')
     .get('h2')
-    .contains('Museum of Modern Art')
+    .contains('Fear of Missing Art')
   });
 });
 
@@ -18,7 +18,7 @@ describe('Search Functionality', () => {
   it('Should allows a user to search a keyword and display a related art piece image and details', () => {
     cy.get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
     .get('[data-cy=art-image]')
     .should('have.attr', 'src')
@@ -29,13 +29,25 @@ describe('Search Functionality', () => {
     .contains('Edouard Manet')
   });
 
-  it('Should not allow user to click search when no search term is provided', () => {
+  it('Should not allow user to click through to the art page when no search term is provided', () => {
     cy.get('[data-cy=search-input]')
     .clear()
-    .get('[data-cy=search-button]')
-    .should('not.exist');
+    .get('[data-cy=enter-search-button]')
+    .click()
+    .get('h1')
+    .contains('FOMA')
+    .get('h2')
+    .contains('Fear of Missing Art')
   });
 
+  it('Should prompt users to add a new search term if nothing is found', () => {
+    cy.get('[data-cy=search-input]')
+    .type('hoewufggfhwjfj')
+    .get('[data-cy=enter-search-button]')
+    .click()
+    .get('[data-cy=error-message]')
+    .contains('Search term not found')
+  });
 });
 
 describe('Art Page Functionality', () => {
@@ -45,7 +57,7 @@ describe('Art Page Functionality', () => {
     .visit('http://localhost:3000/')
     .get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
   })
 
@@ -67,15 +79,21 @@ describe('Art Page Functionality', () => {
     .should('not.be.visible');
   });
 
-  it('Should not allow the user to return home to the landing page', () => {
+  it('Should allow the user to return home to the landing page', () => {
     cy.get('[data-cy=home-button]')
     .click()
     .get('h1')
-    .contains('FOMO')
+    .contains('FOMA')
     .get('h2')
-    .contains('Museum of Modern Art')
+    .contains('Fear of Missing Art')
   });
 
+  it('Should allow the user to click to the favorites page', () => {
+    cy.get('[data-cy=view-favorites-button]')
+    .click()
+    .get('h1')
+    .contains('Favorites')
+  });
 })
 
 describe('Favoriting View and Functionality', () => {
@@ -85,25 +103,25 @@ describe('Favoriting View and Functionality', () => {
     .visit('http://localhost:3000/')
     .get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
   })
 
   it('Should allow a user to favorite an art piece', () => {
     cy.get('[data-cy=favorite-button-image]')
     .should('have.attr', 'src')
-    .should('include','/static/media/bookmark.ece37765.svg')
+    .should('include','/static/media/bookmark-outline.99635f64.svg')
     .get('[data-cy=favorite-button]')
     .click()
     .get('[data-cy=favorite-button-image]')
     .should('have.attr', 'src')
-    .should('include','/static/media/bookmark-outline.99635f64.svg')
+    .should('include','/static/media/bookmark.ece37765.svg')
   });
 
   it('Should not allow a user to favorite an art piece twice', () => {
     cy.get('[data-cy=favorite-button]')
     .click()
-    .get('[data-cy=view-favorites]')
+    .get('[data-cy=view-favorites-button]')
     .click()
     .get('[data-cy=favorites-section]')
     .children()
@@ -116,11 +134,11 @@ describe('Favoriting View and Functionality', () => {
     .visit('http://localhost:3000/')
     .get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
     .get('[data-cy=favorite-button]')
     .click()
-    .get('[data-cy=view-favorites]')
+    .get('[data-cy=view-favorites-button]')
     .click()
     .get('[data-cy=favorites-section]')
     .children()
@@ -129,7 +147,7 @@ describe('Favoriting View and Functionality', () => {
   });
 
   it('Should allow the user to return to searched art', () => {
-    cy.get('[data-cy=view-favorites]')
+    cy.get('[data-cy=view-favorites-button]')
     .click()
     .get('[data-cy=search-button]')
     .click()
@@ -143,14 +161,14 @@ describe('Favoriting View and Functionality', () => {
   });
 
   it('Should allow the user to return home', () => {
-    cy.get('[data-cy=view-favorites]')
+    cy.get('[data-cy=view-favorites-button]')
     .click()
     .get('[data-cy=home-button]')
     .click()
     .get('h1')
-    .contains('FOMO')
+    .contains('FOMA')
     .get('h2')
-    .contains('Museum of Modern Art')
+    .contains('Fear of Missing Art')
   });  
 })
 
@@ -177,21 +195,21 @@ describe('Error Handling', () => {
     .visit('http://localhost:3000/')
     .get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
   })
 
   it('Should allow the user to return to searched art', () => {
     cy.get('[data-cy=error-message]')
-    .contains('Please try again later')
+    .contains('please try again')
   });
 
   it('Should reroute to home when url does not match a route', () => {
     cy.visit('http://localhost:3000/test')
     .get('h1')
-    .contains('FOMO')
+    .contains('FOMA')
     .get('h2')
-    .contains('Museum of Modern Art')
+    .contains('Fear of Missing Art')
   })
 })
 

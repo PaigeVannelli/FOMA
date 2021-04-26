@@ -39,7 +39,7 @@ const ArtDetails = (props) => {
         </button>
         <h1 data-cy='art-title'className='title details'>Title: {checkData('title')}</h1>
         <p className='details'>Medium: {checkData('medium')}</p>
-        <p data-cy='art-artist' className='details'>Artist: {checkData('medium')}</p>
+        <p data-cy='art-artist' className='details'>Artist: {checkData('artist')}</p>
         <p className='details'>Date: {checkData('date')}</p>
       </div>
     </article>
