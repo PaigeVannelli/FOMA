@@ -6,7 +6,8 @@ import search from '../../assets/search.svg'
 import PropTypes from 'prop-types'
 import logo from '../../assets/logo.png'
 
-const Nav = ({ resetSearch }) => {
+const Nav = ({ resetSearch, search }) => {
+  
   return (
     <nav className='header'>
       <img className='logo' src={logo} alt='FOMA-logo'/>
@@ -19,7 +20,7 @@ const Nav = ({ resetSearch }) => {
             alt='home-button'
           />
         </Link>
-        <Link className='link' to='/gallery'>
+        <Link className='link' to='/gallery' onClick={search}>
           <img 
             data-cy='search-button' 
             src={search} 
@@ -41,7 +42,8 @@ const Nav = ({ resetSearch }) => {
 }
 
 Nav.propTypes = {
-  resetSearch: PropTypes.func
+  resetSearch: PropTypes.func,
+  search: PropTypes.func
 }
 
 export default Nav

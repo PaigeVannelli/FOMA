@@ -16,7 +16,8 @@ const LandingPage = ({ search, setSearchTerm }) => {
 }
 
 LandingPage.propTypes = {
-  search: PropTypes.func
+  search: PropTypes.func,
+  setSearchTerm: PropTypes.func
 }
 
 export default LandingPage

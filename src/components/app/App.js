@@ -58,9 +58,9 @@ class App extends Component {
       .catch(() => this.setState({ error: "Something went wrong, please try again later", loading: false, currentArt: {} }))
   }
 
-  search = (searchTerm) => {
+  search = () => {
     this.setState({loading: true, error: '' })
-    fetchArtInfo('search?q=', searchTerm.searchTerm)
+    fetchArtInfo('search?q=', this.state.searchTerm)
     .then(allArt => {
       this.setState({ searchedArtIDs: allArt?.objectIDs })
       if (allArt.objectIDs) {
@@ -73,6 +73,22 @@ class App extends Component {
         this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
       })
     }
+
+  // search = (searchTerm) => {
+  //   this.setState({loading: true, error: '' })
+  //   fetchArtInfo('search?q=', searchTerm.searchTerm)
+  //   .then(allArt => {
+  //     this.setState({ searchedArtIDs: allArt?.objectIDs })
+  //     if (allArt.objectIDs) {
+  //       this.fetchPieceDetails(this.state.searchedArtIDs[0])
+  //     } else {
+  //       this.setState({ error: 'Search term not found, please try again', loading: false, currentArt: {} })
+  //     }
+  //   })
+  //   .catch(() => {
+  //       this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
+  //     })
+  //   }
 
   //Randomize function removed for testing 
   // search = (searchTerm) => {
@@ -134,7 +150,7 @@ class App extends Component {
     return (
       <main className='main'>
         <BrowserRouter>
-        <Nav resetSearch={this.resetSearch}/>
+        <Nav resetSearch={this.resetSearch} search={this.search}/>
           <Switch>
             <Route 
             exact path='/'
