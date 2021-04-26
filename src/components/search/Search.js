@@ -13,6 +13,7 @@ class Search extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value})
+    this.props.setSearchTerm(event.target.value)
   }
 
   searchForInput = () => {

@@ -126,6 +126,10 @@ class App extends Component {
     }))
   }
 
+  setSearchTerm = (searchTerm) => {
+    this.setState({ searchTerm: searchTerm})
+  }
+
   render() {
     return (
       <main className='main'>
@@ -135,7 +139,7 @@ class App extends Component {
             <Route 
             exact path='/'
             render={() => {
-              return <LandingPage search={this.search}/>
+              return <LandingPage search={this.search} setSearchTerm={this.setSearchTerm}/>
             }}
             />
             <Route 
