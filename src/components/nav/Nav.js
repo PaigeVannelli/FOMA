@@ -19,7 +19,7 @@ const Nav = ({ resetSearch }) => {
             alt='home-button'
           />
         </Link>
-        <Link className='link' to='/gallery'>
+        <Link className='link' to='/gallery' onClick={search()}>
           <img 
             data-cy='search-button' 
             src={search} 

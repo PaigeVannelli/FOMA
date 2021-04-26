@@ -18,6 +18,7 @@ class Foma extends Component {
         isFavorited: false,
         lastPiece: false,
       },
+      searchTerm: '',
       loading: true,
       error: ''
     }
