@@ -35,7 +35,7 @@ const ArtPage = (props) => {
               className='display-next-button' 
               onClick={props.displayNextPiece}
             > 
-            <img className='next-arrow' src={nextArrow} />
+            <img className='next-arrow' src={nextArrow} alt='next-art-piece-button'/>
             </button>
           </div>
         </>

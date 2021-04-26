@@ -9,7 +9,7 @@ import logo from '../../assets/logo.png'
 const Nav = ({ resetSearch }) => {
   return (
     <nav className='header'>
-      <img className='logo' src={logo} />
+      <img className='logo' src={logo} alt='FOMA-logo'/>
       <div className='button-nav'>
         <Link className='link' to='/' onClick={resetSearch}>
           <img 
