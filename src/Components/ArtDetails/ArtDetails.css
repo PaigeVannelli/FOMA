@@ -32,6 +32,7 @@
   align-self: flex-end;  
   border-radius: 5px;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 .details {
