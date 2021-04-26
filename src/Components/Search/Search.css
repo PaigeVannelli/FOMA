@@ -1,6 +1,6 @@
 .search {
   height: 2em;
-  margin-top: 10px;
+  margin-top: 25px;
   border: 0;
   outline: none;
   display: flex;
@@ -17,6 +17,7 @@
   /* text-decoration: underline; */
   border-bottom: 2px solid black;
   width: 270px;
+  text-decoration: none;
 }
 
 .submit-button {
