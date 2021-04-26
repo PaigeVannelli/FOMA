@@ -12,5 +12,5 @@
 .favorite-image {
   max-height: 10em;
   max-width: 10em;
-  box-shadow: 3px 3px 15px;
+  box-shadow: -3px 5px 5px rgb(54, 54, 54);
 }

@@ -12,12 +12,6 @@
   justify-content: space-between;
 }
 
-/* .button {
-  height: 2em;
-  margin: 15px;
-  outline: none !important;
-} */
-
 .art-plaque {
   height: 340px;
   width: 90%;
@@ -25,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  box-shadow: -2px 4px 5px black;
+  box-shadow: -3px 10px 5px rgb(54, 54, 54);
   border-radius: 5px;
   background-image: url('https://media.istockphoto.com/photos/silver-metal-texture-background-picture-id1007075100?k=6&m=1007075100&s=612x612&w=0&h=dwOQtXCswDwsCIUZN86RPkV6HZEtxpMjq1Qwo_ADvyI=');
 }
