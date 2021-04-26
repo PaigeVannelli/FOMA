@@ -86,15 +86,15 @@ Sketch was utilized to create wireframes. We tested all user stories with our wi
 
 #### General
 FOMA is an application that allows users to browse art based on their interest. When user first open the app they are prompted to enter a search term. The term can be a favorite artists, topic, keyword etc. 
-<img src="http://www.giphy.com/gifs/eRvO2BDVS0ylJ2nVkD">
+<img src="src/assets/search.gif">
 
 #### Art View
 Users will then be taken to the gallery page to view their searched art. They can click through to see pieces displayed one at a time. 
-<img src="http://www.giphy.com/gifs/2AYy8dPUUWxp9JeQ0f">
+<img src="src/assets/next.gif">
 
 #### Favoriting
 Users can favorite different pieces of art on the gallery page and then view their favorited art pieces on the art page. 
-<img src="http://www.giphy.com/gifs/bsA3IWQFzEo9Y0VAAN">
+<img src="src/assets/favoriting.gif">
 
 #### Error Handling
 Error handling was considered when building the website. A loading screen will appear when art is still being retrieved from the API. When a user wants to search for art, they must fill out the search field in order for the Enter the Museum button to activate. The user will know that the button is activated because it turns blue and is underlined. If a user searches a term that returns no art, they will receive a descriptive message prompting them to try a new search. 
