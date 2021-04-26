@@ -1,7 +1,6 @@
 import './Search.css'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import search from '../../assets/search.svg'
 import PropTypes from 'prop-types'
 
 class Search extends Component {
