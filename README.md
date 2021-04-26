@@ -29,11 +29,11 @@ https://frontend.turing.edu/projects/module-3/niche-audience.html
 
 #### Final Product:
 ##### Home Page:
-<img src="src/assets/main-page.png" style="width:50px;"/>
+<img src="./src/assets/main-page.png" style="width:50px;"/>
 
 
 ##### Gallery View:
-![](src/assets/gallery-view.png)
+![](./src/assets/gallery-view.png)
 
 ## Project Goals
 1. Use the technology you’ve been working with over the course of the past 6 weeks to demonstrate mastery of the following:
@@ -80,21 +80,21 @@ https://foma-gallery.herokuapp.com/
 ## Wireframes
 Sketch was utilized to create wireframes. We tested all user stories with our wireframes/prototypes to ensure that our designs catered to the needs of our users.
 
-![](src/assets/Shine_wireframes.png)
+![](src/assets/wireframes.png)
 
 ## Functionality
 
 #### General
-FOMA is an application that allows users to browse art based on their interest. When user first opene the app they are prompted to enter a search term. The term can be a favorite artists, topic, keyword etc. 
-<img src="https://media.giphy.com/media/OiXZuoIeE3yjG159kf/giphy.gif">
+FOMA is an application that allows users to browse art based on their interest. When user first open the app they are prompted to enter a search term. The term can be a favorite artists, topic, keyword etc. 
+<img src="http://www.giphy.com/gifs/eRvO2BDVS0ylJ2nVkD">
 
 #### Art View
 Users will then be taken to the gallery page to view their searched art. They can click through to see pieces displayed one at a time. 
-<img src="https://media.giphy.com/media/HuX1Vlff648hRVV0cl/giphy.gif">
+<img src="http://www.giphy.com/gifs/2AYy8dPUUWxp9JeQ0f">
 
 #### Favoriting
 Users can favorite different pieces of art on the gallery page and then view their favorited art pieces on the art page. 
-<img src="https://media.giphy.com/media/uCYtsaDcTB8Fzijk0N/giphy.gif">
+<img src="http://www.giphy.com/gifs/bsA3IWQFzEo9Y0VAAN">
 
 #### Error Handling
 Error handling was considered when building the website. A loading screen will appear when art is still being retrieved from the API. When a user wants to search for art, they must fill out the search field in order for the Enter the Museum button to activate. The user will know that the button is activated because it turns blue and is underlined. If a user searches a term that returns no art, they will receive a descriptive message prompting them to try a new search. 
