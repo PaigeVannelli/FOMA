@@ -7,7 +7,7 @@ import AllFavorites from '../allFavorites/AllFavorites'
 import fetchArtInfo from '../../ApiCalls'
 import Nav from '../nav/Nav'
 
-class Foma extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -125,7 +125,7 @@ class Foma extends Component {
     }))
   }
 
-  render = () => {
+  render() {
     return (
       <main className='main'>
         <BrowserRouter>
@@ -135,7 +135,8 @@ class Foma extends Component {
             exact path='/'
             render={() => {
               return <LandingPage search={this.search}/>
-            }}/>
+            }}
+            />
             <Route 
             exact path={'/gallery'}
             render={() => {
@@ -170,6 +171,6 @@ class Foma extends Component {
       </main>
     )
   }
-}
+};
 
-export default Foma;
+export default App;
