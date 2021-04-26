@@ -81,20 +81,26 @@ class App extends Component {
       .then(data => {
         const artObject = this.simplifyArtObject(data)
         this.setState({ currentArt: artObject, loading: false })
-        // this.checkIfFavorited(data)
         this.checkLastPiece()
       })
-      .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
+      .catch(() => this.setState({ error: "Something went wrong, please try again later", loading: false, currentArt: {} }))
   }
 
   search = (searchTerm) => {
-    this.setState({loading: true})
+    this.setState({loading: true, error: '' })
     fetchArtInfo('search?q=', searchTerm.searchTerm)
     .then(allArt => {
       this.setState({ searchedArtIDs: allArt?.objectIDs })
-      this.fetchPieceDetails(this.state.searchedArtIDs[0])
+      if (allArt.objectIDs) {
+        this.fetchPieceDetails(this.state.searchedArtIDs[0])
+      } else {
+        this.setState({ error: 'Search term not found, please try again', loading: false, currentArt: {} })
+      }
     })
-    .catch(() => this.setState({ error: 'Please try again later' }))
+    .catch(error => {
+      console.log(error)
+        this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
+      })
     }
 
   //Randomize function removed for testing 
@@ -159,11 +165,11 @@ class App extends Component {
     }))
   }
 
-  checkForErrors = () => {
-    if (this.state.error) {
-      return <h1 className='error'>{this.state.error}</h1>
-    }
-  }
+  // checkForErrors = () => {
+  //   if (this.state.error) {
+  //     return <h1 className='error'>{this.state.error}</h1>
+  //   }
+  // }
 
   render = () => {
     return (
@@ -182,7 +188,6 @@ class App extends Component {
               return (
                 <ArtPage 
                   loading={this.state.loading}
-                  validSearch={this.state.searchedArtIDs?.length > 0}
                   currentArt={this.state.currentArt} 
                   displayNextPiece={this.displayNextPiece} 
                   addFavorite={this.addFavorite}
