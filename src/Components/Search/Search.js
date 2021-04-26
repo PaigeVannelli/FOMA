@@ -16,8 +16,7 @@ class Search extends Component {
     this.setState({ [event.target.name]: event.target.value})
   }
 
-  searchForInput = event => {
-    // event.preventDefault()
+  searchForInput = () => {
     const searchTerm = {
       id: Date.now(),
       ...this.state,
@@ -30,6 +29,12 @@ class Search extends Component {
     this.setState({ searchTerm: '' })
   }
 
+  // handleKeyPress = (event) => {
+  //   if(event.key === 'Enter'){
+  //     this.searchForInput()
+  //   }
+  // }
+
   render() {
     return (
       <form className='search'>
@@ -41,16 +46,15 @@ class Search extends Component {
         name='searchTerm'
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
+        // onKeyPress={this.handleKeyPress}
         />
         <Link 
           data-cy='search-button' 
           className='submit-button' 
-          // onClick={event => this.searchForInput(event)} 
           to="/gallery"
-          onClick={this.state.searchTerm ? (event => this.searchForInput(event)) : ((event) => event.preventDefault()) }
+          onClick={this.state.searchTerm ? (() => this.searchForInput()) : ((event) => event.preventDefault()) }
         >
-          {/* <img src={search} className='search-image' alt='search-button'/> */}
-          <p className={`submit-button ${this.state.searchTerm && 'submit-button-active'}`}>ENTER</p>
+          <p className={`submit-button ${this.state.searchTerm && 'submit-button-active'}`}>ENTER THE MUSEUM</p>
         </Link>
       </form>
     )

@@ -94,8 +94,6 @@ class App extends Component {
       this.setState({ searchedArtIDs: allArt?.objectIDs })
       this.fetchPieceDetails(this.state.searchedArtIDs[0])
     })
-    // .then(allArt => this.setState({ searchedArtIDs: allArt?.objectIDs }))
-    // .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     .catch(() => this.setState({ error: 'Please try again later' }))
     }
 
