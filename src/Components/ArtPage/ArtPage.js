@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import nextArrow from '../../assets/next.png'
 
 const ArtPage = (props) => {
-
+  
   const displayPiece = () => {
     if (props.error) {
       return (
