@@ -1,6 +1,6 @@
 # FOMA: Fear of Missing Art 
 <p align="center">
-<img src="./src/assets/logo.png" alt="FOMA Logo" width="200">
+<img src="./src/assets/foma-logo.png" alt="FOMA Logo" width="200">
 </p>  
 
 ## Table of Contents
@@ -29,11 +29,11 @@ https://frontend.turing.edu/projects/module-3/niche-audience.html
 
 #### Final Product:
 ##### Home Page:
-<img src="src/assets/shine_home.png" style="width:50px;"/>
+<img src="./src/assets/main-page.png" style="width:50px;"/>
 
 
-##### Replies Page:
-![](src/assets/shine_replies.png)
+##### Gallery View:
+![](./src/assets/gallery-view.png)
 
 ## Project Goals
 1. Use the technology you’ve been working with over the course of the past 6 weeks to demonstrate mastery of the following:
@@ -80,13 +80,14 @@ https://foma-gallery.herokuapp.com/
 ## Wireframes
 Sketch was utilized to create wireframes. We tested all user stories with our wireframes/prototypes to ensure that our designs catered to the needs of our users.
 
-![](src/assets/Shine_wireframes.png)
+![](src/assets/wireframes.png)
 
 ## Functionality
 
 #### General
 FOMA is an application that allows users to browse art based on their interest. When user first opene the app they are prompted to enter a search term. The term can be a favorite artists, topic, keyword etc. 
 <img src="./src/assets/search.gif">
+![Search](src/assets/search.gif) 
 
 #### Art View
 Users will then be taken to the gallery page to view their searched art. They can click through to see pieces displayed one at a time. 
@@ -102,7 +103,7 @@ Error handling was considered when building the website. A loading screen will a
 #### Accessibility
 FOMA received a 100% from Lighthouse on Accessibility. Users can tab throughout the full application, making it accessible for those using keyboards to navigate through.
 
-![](src/assets/shine_lighthouse.png)
+![](src/assets/accessibility.png)
 
 ## Contact the Contributer
 [<img src="https://img.shields.io/badge/LinkedIn-paigevannelli-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0FBBD6"/>][linkedin3]
