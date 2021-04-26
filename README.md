@@ -1,6 +1,6 @@
 # FOMA: Fear of Missing Art 
 <p align="center">
-<img src="src/assets/foma-logo.png" alt="FOMA Logo" width="200">
+<img src="./src/assets/foma-logo.png" alt="FOMA Logo" width="200">
 </p>  
 
 ## Table of Contents
