@@ -45,7 +45,7 @@ class Search extends Component {
         onChange={event => this.handleChange(event)}
         />
         <Link 
-          data-cy='search-button' 
+          data-cy='enter-search-button' 
           className='submit-button' 
           to="/gallery"
         >

@@ -2,9 +2,9 @@ describe('Landing Page View', () => {
   it('Should display a landing page when website is opened', () => {
     cy.visit('http://localhost:3000/')
     .get('h1')
-    .contains('FOMO')
+    .contains('FOMA')
     .get('h2')
-    .contains('Museum of Modern Art')
+    .contains('Fear of Missing Art')
   });
 });
 
@@ -15,10 +15,10 @@ describe('Search Functionality', () => {
     .visit('http://localhost:3000/')
   })
 
-  it('Should allows a user to search a keyword and display a related art piece image and details', () => {
+  it.only('Should allows a user to search a keyword and display a related art piece image and details', () => {
     cy.get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
     .get('[data-cy=art-image]')
     .should('have.attr', 'src')
