@@ -15,7 +15,7 @@ describe('Search Functionality', () => {
     .visit('http://localhost:3000/')
   })
 
-  it.only('Should allows a user to search a keyword and display a related art piece image and details', () => {
+  it('Should allows a user to search a keyword and display a related art piece image and details', () => {
     cy.get('[data-cy=search-input]')
     .type('monet')
     .get('[data-cy=enter-search-button]')
@@ -29,13 +29,25 @@ describe('Search Functionality', () => {
     .contains('Edouard Manet')
   });
 
-  it('Should not allow user to click search when no search term is provided', () => {
+  it('Should not allow user to click through to the art page when no search term is provided', () => {
     cy.get('[data-cy=search-input]')
     .clear()
-    .get('[data-cy=search-button]')
-    .should('not.exist');
+    .get('[data-cy=enter-search-button]')
+    .click()
+    .get('h1')
+    .contains('FOMA')
+    .get('h2')
+    .contains('Fear of Missing Art')
   });
 
+  it('Should prompt users to add a new search term if nothing is found', () => {
+    cy.get('[data-cy=search-input]')
+    .type('hoewufggfhwjfj')
+    .get('[data-cy=enter-search-button]')
+    .click()
+    .get('[data-cy=error-message]')
+    .contains('Search term not found')
+  });
 });
 
 describe('Art Page Functionality', () => {
@@ -45,7 +57,7 @@ describe('Art Page Functionality', () => {
     .visit('http://localhost:3000/')
     .get('[data-cy=search-input]')
     .type('monet')
-    .get('[data-cy=search-button]')
+    .get('[data-cy=enter-search-button]')
     .click()
   })
 
@@ -67,15 +79,21 @@ describe('Art Page Functionality', () => {
     .should('not.be.visible');
   });
 
-  it('Should not allow the user to return home to the landing page', () => {
+  it('Should allow the user to return home to the landing page', () => {
     cy.get('[data-cy=home-button]')
     .click()
     .get('h1')
-    .contains('FOMO')
+    .contains('FOMA')
     .get('h2')
-    .contains('Museum of Modern Art')
+    .contains('Fear of Missing Art')
   });
 
+  it('Should allow the user to click to the favorites page', () => {
+    cy.get('[data-cy=view-favorites-button]')
+    .click()
+    .get('h1')
+    .contains('Favorites')
+  });
 })
 
 describe('Favoriting View and Functionality', () => {

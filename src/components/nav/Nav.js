@@ -13,6 +13,7 @@ const Nav = ({ resetSearch }) => {
       <div className='button-nav'>
         <Link className='link' to='/' onClick={resetSearch}>
           <img 
+            data-cy='home-button'
             src={home} 
             className={`button ${useLocation().pathname === '/' && 'home-highlighted'}`}
             alt='home-button'
@@ -28,7 +29,7 @@ const Nav = ({ resetSearch }) => {
         </Link>
         <Link className='link' to='/favorites'>
           <img 
-            data-cy='view-favorites' 
+            data-cy='view-favorites-button' 
             src={bookmark} 
             className={`button ${useLocation().pathname === '/favorites' && 'favorites-highlighted'}`}
             alt='favorites-button'
