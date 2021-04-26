@@ -2,7 +2,7 @@ import './Nav.css'
 import { Link, useLocation } from 'react-router-dom'
 import home from '../../assets/home.svg'
 import bookmark from '../../assets/bookmark.svg'
-import search from '../../assets/search.svg'
+import searchIcon from '../../assets/search.svg'
 import PropTypes from 'prop-types'
 import logo from '../../assets/logo.png'
 
@@ -23,7 +23,7 @@ const Nav = ({ resetSearch, search }) => {
         <Link className='link' to='/gallery' onClick={search}>
           <img 
             data-cy='search-button' 
-            src={search} 
+            src={searchIcon} 
             className={`button ${useLocation().pathname === '/gallery' && 'search-highlighted'}`}
             alt='search-button'
           />
