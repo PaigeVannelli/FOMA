@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import './FOMA.css';
+import './Foma.css';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
 import AllFavorites from '../allFavorites/AllFavorites'
 import fetchArtInfo from '../../ApiCalls'
 import Nav from '../nav/Nav'
-import logo from '../../assets/logo.png';
 
-class FOMA extends Component {
+class Foma extends Component {
   constructor() {
     super();
     this.state = {
@@ -173,4 +172,4 @@ class FOMA extends Component {
   }
 }
 
-export default FOMA;
+export default Foma;

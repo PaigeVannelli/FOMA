@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import FOMA from './components/FOMA/FOMA';
+import Foma from './components/foma/Foma.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FOMA />
+    <Foma />
   </React.StrictMode>,
   document.getElementById('root')
 );
