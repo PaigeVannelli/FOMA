@@ -8,14 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 75%;
+  width: 80%;
 }
 
 .art-piece {
   max-height: 25em;
   max-width: 50em;
-  box-shadow: 3px 3px 5px 3px grey;
-  /* background: transparent url('http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif') center no-repeat; */
+  box-shadow: -3px 10px 5px rgb(54, 54, 54);
 }
 
 .display-next-button {
@@ -27,6 +26,7 @@
   font-weight: 600;
   justify-self: flex-end;
   outline: none;
+  cursor: pointer;
 }
 
 .display-next-button-container {
@@ -36,11 +36,12 @@
   padding: none;
 }
 
-.art-details {
-  display: flex;
-  height: 100%;
-  float: right;
-  right: 0;
+.error-message {
+  justify-self: center;
+}
+
+.next-arrow {
+  height: 1em;
 }
 
 .lds-ellipsis {

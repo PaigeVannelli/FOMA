@@ -2,6 +2,7 @@ import './ArtPage.css'
 // import React, { Component } from 'react'
 import ArtDetails from '../artDetails/ArtDetails'
 import PropTypes from 'prop-types'
+import nextArrow from '../../assets/next.png'
 
 const ArtPage = (props) => {
 
@@ -61,7 +62,11 @@ const ArtPage = (props) => {
   // }
   const checkForErrors = () => {
     if (props.error) {
-      return <h1 data-cy='error-message'>{props.error}</h1>
+      return (
+        <div className='art-piece-container'>
+          <h1 className='error-message' data-cy='error-message'>{props.error}</h1>
+        </div>
+      )
     } else {
       return (
         <div className='art-piece-container'>
@@ -89,7 +94,9 @@ const ArtPage = (props) => {
             data-cy='advance-button' 
             className='display-next-button' 
             onClick={props.displayNextPiece}
-          > > </button>
+          > 
+          <img className='next-arrow' src={nextArrow} />
+          </button>
         </div>
       </>
       :

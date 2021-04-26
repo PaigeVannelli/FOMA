@@ -1,11 +1,9 @@
 .art-details {
   display: flex;
   flex-direction: column;
-  /* background-color: rgb(194, 194, 194); */
-  background-color: rgb(204, 201, 196);
-  width: 25%;
-  min-width: 30em;
-  box-shadow: 2px 5px 15px 5px black;
+  justify-content: center;
+  width: 20%;
+  min-width: 25em;
 }
 
 .art-display-nav {
@@ -14,28 +12,37 @@
   justify-content: space-between;
 }
 
-.button {
-  height: 2em;
-  margin: 15px;
-  outline: none !important;
+.art-plaque {
+  height: 340px;
+  width: 90%;
+  background-color: rgb(204, 201, 196);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  box-shadow: -3px 10px 5px rgb(54, 54, 54);
+  border-radius: 5px;
+  background-image: url('https://media.istockphoto.com/photos/silver-metal-texture-background-picture-id1007075100?k=6&m=1007075100&s=612x612&w=0&h=dwOQtXCswDwsCIUZN86RPkV6HZEtxpMjq1Qwo_ADvyI=');
 }
 
 .favorite-button{
-  background-color: rgb(204, 201, 196);
+  width: 5em;
+  background-color: transparent;
   border: none;
-  outline: none !important
+  outline: none !important;
+  align-self: flex-end;  
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
 }
 
-/* .home {
-  height: 2em;
-  margin: 15px 15px 15px 35px;
-} */
-
 .details {
-  margin-left: 35px
+  font-family: 'Roboto', sans-serif;
+  margin: 15px 35px 15px 35px;
+  font-weight: 1000;
 }
 
 .title {
-  margin-top: 40%;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 8%;
 }
 

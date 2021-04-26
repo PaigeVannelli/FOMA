@@ -5,6 +5,8 @@ import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
 import AllFavorites from '../allFavorites/AllFavorites'
 import fetchArtInfo from '../../ApiCalls'
+import Nav from '../nav/Nav'
+import logo from '../../assets/logo.png';
 
 //Change app to name! 
 class App extends Component {
@@ -46,33 +48,40 @@ class App extends Component {
       }))
     } else {
       this.setState(prevState => ({
-        currentArt: {                 
-            ...prevState.currentArt,    
-            lastPiece: false     
-        }
+        // currentArt: {                 
+        //     ...prevState.currentArt,    
+        //     lastPiece: false     
+        // }
       }))
     }
   }
 
-  checkIfFavorited = (artPiece) => {
-    this.state.favoritedArt.forEach(piece => {
-      if (piece.title === artPiece.title) {
-        this.setState(prevState => ({
-          currentArt: {                 
-              ...prevState.currentArt,    
-              isFavorited: true      
-          }
-        }))
-      }
-    })
-  }
+  // checkIfFavorited = (artPiece) => {
+  //   this.state.favoritedArt.forEach(piece => {
+  //     if (piece.title === artPiece.title) {
+  //       this.setState(prevState => ({
+  //         currentArt: {                 
+  //             ...prevState.currentArt,    
+  //             isFavorited: true      
+  //         }
+  //       }))
+  //     } else {
+  //       this.setState(prevState => ({
+  //         currentArt: {                 
+  //             ...prevState.currentArt,    
+  //             isFavorited: false     
+  //         }
+  //       }))
+  //     }
+  //   })
+  // }
 
   fetchPieceDetails = (currentID) => {
     fetchArtInfo('objects/', currentID)
       .then(data => {
         const artObject = this.simplifyArtObject(data)
         this.setState({ currentArt: artObject, loading: false })
-        this.checkIfFavorited(data)
+        // this.checkIfFavorited(data)
         this.checkLastPiece()
       })
       .catch(() => this.setState({ error: "Something went wrong, please try again later" }))
@@ -85,8 +94,6 @@ class App extends Component {
       this.setState({ searchedArtIDs: allArt?.objectIDs })
       this.fetchPieceDetails(this.state.searchedArtIDs[0])
     })
-    // .then(allArt => this.setState({ searchedArtIDs: allArt?.objectIDs }))
-    // .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
     .catch(() => this.setState({ error: 'Please try again later' }))
     }
 
@@ -162,9 +169,8 @@ class App extends Component {
     return (
       <main className='main'>
         <BrowserRouter>
-        {/* {this.checkForErrors()} */}
+        <Nav resetSearch={this.resetSearch}/>
           <Switch>
-            {/* {this.state.searchedArtIDs.length > 0 && <Redirect to={`/${this.state.currentArtId}`} />} */}
             <Route 
             exact path='/'
             render={() => {
