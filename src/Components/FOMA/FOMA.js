@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css';
+import './FOMA.css';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import LandingPage from '../landingPage/LandingPage'
 import ArtPage from '../artPage/ArtPage'
@@ -8,8 +8,7 @@ import fetchArtInfo from '../../ApiCalls'
 import Nav from '../nav/Nav'
 import logo from '../../assets/logo.png';
 
-//Change app to name! 
-class App extends Component {
+class FOMA extends Component {
   constructor() {
     super();
     this.state = {
@@ -215,4 +214,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default FOMA;

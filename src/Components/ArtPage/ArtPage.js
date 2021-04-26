@@ -1,9 +1,7 @@
 import './ArtPage.css'
-// import React, { Component } from 'react'
 import ArtDetails from '../artDetails/ArtDetails'
 import PropTypes from 'prop-types'
 import nextArrow from '../../assets/next.png'
-import { Link } from 'react-router-dom'
 
 const ArtPage = (props) => {
 
