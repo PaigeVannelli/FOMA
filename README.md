@@ -87,6 +87,7 @@ Sketch was utilized to create wireframes. We tested all user stories with our wi
 #### General
 FOMA is an application that allows users to browse art based on their interest. When user first open the app they are prompted to enter a search term. The term can be a favorite artists, topic, keyword etc. 
 <img src="src/assets/search.gif">
+![Search](src/assets/search.gif) 
 
 #### Art View
 Users will then be taken to the gallery page to view their searched art. They can click through to see pieces displayed one at a time. 
