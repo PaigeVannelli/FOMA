@@ -25,15 +25,15 @@ class FOMA extends Component {
   }
   
   simplifyArtObject = (artObject) => {
-    let cleanedArtObject = {}
-    cleanedArtObject.id = artObject.objectID
-    cleanedArtObject.title = artObject.title
-    cleanedArtObject.artist = artObject.artistDisplayName
-    cleanedArtObject.medium = artObject.medium
-    cleanedArtObject.date = artObject.objectDate
-    cleanedArtObject.image = artObject.primaryImage
-    cleanedArtObject.smallImage = artObject.primarySmallImage
-    cleanedArtObject.isFavorited = false
+    let cleanedArtObject = {
+      id: artObject.objectID,
+      title: artObject.title,
+      artist: artObject.artistDisplayName,
+      medium: artObject.medium,
+      date: artObject.objectDate,
+      image: artObject.primaryImage,
+      isFavorited: false
+    }
     return cleanedArtObject
   }
 
@@ -45,35 +45,8 @@ class FOMA extends Component {
             lastPiece: true      
         }
       }))
-    } else {
-      this.setState(prevState => ({
-        // currentArt: {                 
-        //     ...prevState.currentArt,    
-        //     lastPiece: false     
-        // }
-      }))
-    }
+    } 
   }
-
-  // checkIfFavorited = (artPiece) => {
-  //   this.state.favoritedArt.forEach(piece => {
-  //     if (piece.title === artPiece.title) {
-  //       this.setState(prevState => ({
-  //         currentArt: {                 
-  //             ...prevState.currentArt,    
-  //             isFavorited: true      
-  //         }
-  //       }))
-  //     } else {
-  //       this.setState(prevState => ({
-  //         currentArt: {                 
-  //             ...prevState.currentArt,    
-  //             isFavorited: false     
-  //         }
-  //       }))
-  //     }
-  //   })
-  // }
 
   fetchPieceDetails = (currentID) => {
     fetchArtInfo('objects/', currentID)
@@ -96,8 +69,7 @@ class FOMA extends Component {
         this.setState({ error: 'Search term not found, please try again', loading: false, currentArt: {} })
       }
     })
-    .catch(error => {
-      console.log(error)
+    .catch(() => {
         this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
       })
     }
@@ -111,25 +83,15 @@ class FOMA extends Component {
   //     .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
   //   }
   
-  // search = async (searchTerm) => {
-  //   try {
-  //     const response = await fetchArtInfo('search?q=', searchTerm.searchTerm)
-  //     this.setState({ searchedArtIDs: response.objectIDs })
-  //     this.setState({ currentArtID: this.state.searchedArtIDs[0] })
-  //   } catch(error) {
-  //     this.setState({ error: error.message })
+  // randomizeArtIDs = (searchedArtArray) => {
+  //   for (var i = searchedArtArray.length - 1; i > 0; i--) {
+  //     var j = Math.floor(Math.random() * (i + 1));
+  //     var temp = searchedArtArray[i];
+  //     searchedArtArray[i] = searchedArtArray[j];
+  //     searchedArtArray[j] = temp;
   //   }
+  //   this.setState({ searchedArtIDs: searchedArtArray })
   // }
-  
-  randomizeArtIDs = (searchedArtArray) => {
-    for (var i = searchedArtArray.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = searchedArtArray[i];
-      searchedArtArray[i] = searchedArtArray[j];
-      searchedArtArray[j] = temp;
-    }
-    this.setState({ searchedArtIDs: searchedArtArray })
-  }
   
   displayNextPiece = () => {
     if (this.state.currentArtIndex + 1 < this.state.searchedArtIDs.length) {
@@ -144,8 +106,8 @@ class FOMA extends Component {
     if (!this.state.favoritedArt.includes(favorite)) {
       let tempFavoritedArt = this.state.favoritedArt
       tempFavoritedArt.push(favorite)
-      this.setState({ favoritedArt: tempFavoritedArt })
       this.setState(prevState => ({
+        favoritedArt: tempFavoritedArt,
         currentArt: {                  
             ...prevState.currentArt,    
             isFavorited: true       
@@ -163,12 +125,6 @@ class FOMA extends Component {
       }
     }))
   }
-
-  // checkForErrors = () => {
-  //   if (this.state.error) {
-  //     return <h1 className='error'>{this.state.error}</h1>
-  //   }
-  // }
 
   render = () => {
     return (
@@ -200,7 +156,10 @@ class FOMA extends Component {
             exact path={'/favorites'}
             render={() => {
               return (
-                <AllFavorites favoritedArt={this.state.favoritedArt} resetSearch={this.resetSearch}/>
+                <AllFavorites 
+                  favoritedArt={this.state.favoritedArt} 
+                  resetSearch={this.resetSearch}
+                />
               )
             }}
             />
