@@ -1,7 +1,6 @@
 import './Search.css'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import search from '../../assets/search.svg'
 import PropTypes from 'prop-types'
 
 class Search extends Component {
@@ -29,11 +28,9 @@ class Search extends Component {
     this.setState({ searchTerm: '' })
   }
 
-  // handleKeyPress = (event) => {
-  //   if(event.key === 'Enter'){
-  //     this.searchForInput()
-  //   }
-  // }
+  validateSearch = () => {
+    return this.state.searchTerm ? (() => this.searchForInput()) : ((event) => event.preventDefault()) 
+  }
 
   render() {
     return (
@@ -46,15 +43,15 @@ class Search extends Component {
         name='searchTerm'
         value={this.state.searchTerm}
         onChange={event => this.handleChange(event)}
-        // onKeyPress={this.handleKeyPress}
         />
         <Link 
           data-cy='search-button' 
           className='submit-button' 
           to="/gallery"
-          onClick={this.state.searchTerm ? (() => this.searchForInput()) : ((event) => event.preventDefault()) }
         >
-          <p className={`submit-button ${this.state.searchTerm && 'submit-button-active'}`}>ENTER THE MUSEUM</p>
+          <button className='submit-button'onClick={this.validateSearch()}>
+            <p className={`submit-text ${this.state.searchTerm && 'submit-text-active'}`}>ENTER THE MUSEUM</p>
+          </button>
         </Link>
       </form>
     )
@@ -66,5 +63,3 @@ Search.propTypes = {
 }
 
 export default Search
-// should be class compoentn that renders a form 
-// store it's value and pass back up to app 

@@ -14,8 +14,7 @@ Favorite.propTypes = {
   key: PropTypes.number,
   id: PropTypes.number,
   title: PropTypes.string,
-  image: PropTypes.string,
-  artist: PropTypes.string
+  image: PropTypes.string
 }
 
 export default Favorite

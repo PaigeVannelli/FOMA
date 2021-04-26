@@ -32,7 +32,6 @@
 .display-next-button-container {
   display: flex;
   align-items: center;
-  /* position: relative; */
   padding: none;
 }
 

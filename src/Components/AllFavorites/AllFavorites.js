@@ -1,6 +1,5 @@
 import './AllFavorites.css'
 import Favorite from '../favorite/Favorite'
-import Nav from '../nav/Nav'
 import PropTypes from 'prop-types';
 
 const AllFavorites = (props) => {
@@ -11,7 +10,6 @@ const AllFavorites = (props) => {
         id={art.id}
         title={art.title}
         image={art.image}
-        artist={art.artist}
       />
     )
   })

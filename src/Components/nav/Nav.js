@@ -14,7 +14,6 @@ const Nav = ({ resetSearch }) => {
         <Link className='link' to='/' onClick={resetSearch}>
           <img 
             src={home} 
-            // className='home button' 
             className={`button ${useLocation().pathname === '/' && 'home-highlighted'}`}
             alt='home-button'
           />

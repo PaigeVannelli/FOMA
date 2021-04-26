@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border-bottom: 2px solid grey; */
 }
 
 .search-input {
@@ -20,6 +19,11 @@
 }
 
 .submit-button {
+  background: transparent;
+  border: none;
+}
+
+.submit-text {
   height: 2em;
   color: black;
   border: none;
@@ -27,7 +31,7 @@
   text-decoration: none;
 }
 
-.submit-button-active {
+.submit-text-active {
   color: #188FA7;
   text-decoration: underline;
   font-weight: bolder;
