@@ -71,43 +71,8 @@ class App extends Component {
     })
     .catch(() => {
         this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
-      })
-    }
-
-  // search = (searchTerm) => {
-  //   this.setState({loading: true, error: '' })
-  //   fetchArtInfo('search?q=', searchTerm.searchTerm)
-  //   .then(allArt => {
-  //     this.setState({ searchedArtIDs: allArt?.objectIDs })
-  //     if (allArt.objectIDs) {
-  //       this.fetchPieceDetails(this.state.searchedArtIDs[0])
-  //     } else {
-  //       this.setState({ error: 'Search term not found, please try again', loading: false, currentArt: {} })
-  //     }
-  //   })
-  //   .catch(() => {
-  //       this.setState({ error: 'Something went wrong, please try again', loading: false, currentArt: {} })
-  //     })
-  //   }
-
-  //Randomize function removed for testing 
-  // search = (searchTerm) => {
-  //   this.setState({loading: true})
-  //   fetchArtInfo('search?q=', searchTerm.searchTerm)
-  //     .then(allArt => this.randomizeArtIDs(allArt.objectIDs))
-  //     .catch(() => this.setState({ error: 'Please try again later' }))
-  //     .then(() => this.fetchPieceDetails(this.state.searchedArtIDs[0]))
-  //   }
-  
-  // randomizeArtIDs = (searchedArtArray) => {
-  //   for (var i = searchedArtArray.length - 1; i > 0; i--) {
-  //     var j = Math.floor(Math.random() * (i + 1));
-  //     var temp = searchedArtArray[i];
-  //     searchedArtArray[i] = searchedArtArray[j];
-  //     searchedArtArray[j] = temp;
-  //   }
-  //   this.setState({ searchedArtIDs: searchedArtArray })
-  // }
+    })
+  }
   
   displayNextPiece = () => {
     if (this.state.currentArtIndex + 1 < this.state.searchedArtIDs.length) {
