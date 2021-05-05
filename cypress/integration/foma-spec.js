@@ -128,23 +128,23 @@ describe('Favoriting View and Functionality', () => {
     .should('have.length', 1)
   });
 
-  it('Should allow user to view all favorited art pieces', () => {
-    cy.intercept('https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {fixture: 'artIDs'})
-    .intercept('https://collectionapi.metmuseum.org/public/collection/v1/objects/436965', {fixture: 'art'})
-    .visit('http://localhost:3000/')
-    .get('[data-cy=search-input]')
-    .type('monet')
-    .get('[data-cy=enter-search-button]')
-    .click()
-    .get('[data-cy=favorite-button]')
-    .click()
-    .get('[data-cy=view-favorites-button]')
-    .click()
-    .get('[data-cy=favorites-section]')
-    .children()
-    .first()
-    .contains('The Monet Family')
-  });
+  // it('Should allow user to view all favorited art pieces', () => {
+  //   cy.intercept('https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet', {fixture: 'artIDs'})
+  //   .intercept('https://collectionapi.metmuseum.org/public/collection/v1/objects/436965', {fixture: 'art'})
+  //   .visit('http://localhost:3000/')
+  //   .get('[data-cy=search-input]')
+  //   .type('monet')
+  //   .get('[data-cy=enter-search-button]')
+  //   .click()
+  //   .get('[data-cy=favorite-button]')
+  //   .click()
+  //   .get('[data-cy=view-favorites-button]')
+  //   .click()
+  //   .get('[data-cy=favorites-section]')
+  //   .children()
+  //   .first()
+  //   .contains('The Monet Family')
+  // });
 
   it('Should allow the user to return to searched art', () => {
     cy.get('[data-cy=view-favorites-button]')

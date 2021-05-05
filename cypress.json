@@ -1,9 +1,1 @@
-{
-  "reporter": "junit",
-  "reporterOption": {
-    "mochafile": "tests/test-output-[hash].xml",
-    "toConsole": true,
-    "attachments": true
-  },
-  "video": false
-}
+{}
