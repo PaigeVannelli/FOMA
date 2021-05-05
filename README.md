@@ -35,6 +35,9 @@ https://frontend.turing.edu/projects/module-3/niche-audience.html
 ##### Gallery View:
 ![](./src/assets/gallery-view.png)
 
+##### Gallery View:
+![](./src/assets/favorites-view.png)
+
 ## Project Goals
 1. Use the technology you’ve been working with over the course of the past 6 weeks to demonstrate mastery of the following:
  - React
